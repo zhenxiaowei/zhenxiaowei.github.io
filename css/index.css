@@ -1,0 +1,27 @@
+.title{
+    width: 100%;
+    height: 0.7rem;
+    line-height: 0.7rem;
+    background: black;
+    color: #fff;
+    font-size: 0.3rem;
+    text-align: center;
+}
+.box h3{
+    font-size: 0.25rem;
+    color: #000;
+    line-height: 0.6rem;
+}
+.box p{
+    font-size: 0.16rem;
+    line-height: 0.4rem;
+}
+.p30{
+    padding-left: 0.3rem;
+}
+.p50{
+    padding-left: 0.5rem;
+}
+.p70{
+    padding-left: 0.7rem;
+}
