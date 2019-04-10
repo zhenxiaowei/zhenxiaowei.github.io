@@ -1,68 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
-	<meta name="apple-mobile-web-app-capable" content="yes" /><!-- 删除苹果默认的工具栏和菜单栏 -->
-	<meta name="apple-mobile-web-app-status-bar-style" content="black" /><!-- 设置苹果工具栏颜色 -->
-	<meta name="format-detection" content="telephone=no, email=no" /><!-- 忽略页面中的数字识别为电话，忽略email识别 -->
-	<title>甄晓伟</title>
-	<link rel="stylesheet" href="css/reset.css">
-	<link rel="stylesheet" href="css/index.css">
-	<script src="js/common.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/><!-- 删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/><!-- 设置苹果工具栏颜色 -->
+    <meta name="format-detection" content="telephone=no, email=no"/><!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    <title>甄晓伟</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <script src="js/common.js"></script>
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
 <h1 class="title"></h1>
 <ul class="box">
-	<li>
-		<h3 class="p30">1.一个200*200的div在不同分辨率屏幕下，上下左右居中，用CSS实现</h3>
-		<p class="p50">
-			方法一
-		</p>
-		<p class="p70">
-			div{
-				position:absolute;
-				width:200px;
-				height:200px;
-				top:50%;
-				left:50%;
-				margin-left:-100px;
-				height:-100px;
-				z-index:100;
-				}
-		</p>
-		<p class="p50">
-			方法二
-		</p>
-		<p class="p70">
-			div{
-			position:absolute;
-			width:200px;
-			height:200px;
-			top:0;
-			left:0;
-			right:0;
-			bottom:0;
-			margin:auto;
-			}
-		</p>
-	</li>
     <li>
-		<h3 class="p30">2.Vue传值</h3>
-		<h6 class="p50">1.父组件向子组件传值(属性传值)</h6>
-		<p class="p70">在父组件中以属性的方式绑定要传递的值</p>
-		<p class="p70">在子组件中使用props的方式接收，记得设置接收的类型</p>
-		<h6 class="p50">2.子组件向父组件传值(事件传值)</h6>
-		<p class="p70">在子组件中注册事件this.$emit(titleChange,11)</p>
-		<p class="p70">在父组件中v-on:titleChange="updateChange($event)",在通过触发updateChange
-		</p>
-		<h6 class="p50">3.this.$parent.url=path;直接改变父组件的属性</h6>
-		<h6 class="p50">4.传值和传引用的区别</h6>
-		<p class="p70">传值指的是传String、布尔等基本类型值；传值只改变所设定的要改变的值</p>
-		<p class="p70">传引用指的是传对象、数组等引用类型值；传引用当改变一个数据的值，则与该绑定的值相关的值都会发生变化</p>
-	</li>
+        <h3>1.一个200*200的div在不同分辨率屏幕下，上下左右居中，用CSS实现</h3>
+        <h6>
+            方法一
+        </h6>
+        <p>
+            div{
+            position:absolute;
+            width:200px;
+            height:200px;
+            top:50%;
+            left:50%;
+            margin-left:-100px;
+            height:-100px;
+            z-index:100;
+            }
+        </p>
+        <h6>
+            方法二
+        </h6>
+        <p>
+            div{
+            position:absolute;
+            width:200px;
+            height:200px;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            margin:auto;
+            }
+        </p>
+    </li>
+    <li>
+        <h3>2.Vue传值</h3>
+        <h6>1.父组件向子组件传值(属性传值)</h6>
+        <p>在父组件中以属性的方式绑定要传递的值</p>
+        <p>在子组件中使用props的方式接收，记得设置接收的类型</p>
+        <h6>2.子组件向父组件传值(事件传值)</h6>
+        <p>在子组件中注册事件this.$emit(titleChange,11)</p>
+        <p>在父组件中v-on:titleChange="updateChange($event)",在通过触发updateChange
+        </p>
+        <h6>3.this.$parent.url=path;直接改变父组件的属性</h6>
+        <h6>4.传值和传引用的区别</h6>
+        <p>传值指的是传String、布尔等基本类型值；传值只改变所设定的要改变的值</p>
+        <p>传引用指的是传对象、数组等引用类型值；传引用当改变一个数据的值，则与该绑定的值相关的值都会发生变化</p>
+        <h6>一、通过路由带参数进行传值</h6>
+        <p>①两个组件 A和B,A组件通过query把orderId传递给B组件（触发事件可以是点击事件、钩子函数等）</p>
+        <p>this.$router.push({ path: '/conponentsB', query: { orderId: 123 } }) // 跳转到B</p>
+        <p>②在B组件中获取A组件传递过来的参数</p>
+        <p>this.$route.query.orderId</p>
+        <h6>二、通过设置 Session Storage缓存的形式进行传递</h6>
+        <p>①两个组件A和B，在A组件中设置缓存orderData</p>
+        <p>const orderData = { 'orderId': 123, 'price': 88 }</p>
+        <p>sessionStorage.setItem('缓存名称', JSON.stringify(orderData))</p>
+        <p>②B组件就可以获取在A中设置的缓存了</p>
+        <p>const dataB = JSON.parse(sessionStorage.getItem('缓存名称'))</p>
+    </li>
+<!--    <li>
+        <h3>1.你能描述一下渐进增强和优雅降级之间的不同吗?</h3>
+        <h6>优雅降级：</h6>
+        <p>web站点在所有新式浏览器中都能正常工作，如果用户使用的是老式浏览器，则代码会检查以确认他们是否能正常工作。由于IE独特的盒模型布局问题，针对不同版本的IE的hack实践过优雅降级了，为那些无法支持功能的浏览器增加候选方案，使之在旧式浏览器上以某种形式降级体验却不至于完全失效。</p>
+        <h6>渐进增强：</h6>
+        <p>从被所有浏览器支持的基本功能开始，逐步的添加那些只有新式浏览器才支持的功能，向页面增加无害于基础浏览器的额外样式和功能。当浏览器支持时，它们会自动的呈现出来并发挥作用。</p>
+    </li>
+    <li>
+        <h3>2.线程与进程的区别</h3>
+        <p>一个程序至少有一个进程，一个进程至少有一个线程。线程的划分尺度小于进程，使得多线程程序的并发性高。</p>
+        <p></p>
+    </li>-->
+
 </ul>
 </body>
 </html>
