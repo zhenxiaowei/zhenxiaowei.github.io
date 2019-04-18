@@ -16,6 +16,27 @@
     <link rel="stylesheet" href="css/index.css">
     <script src="js/public.js"></script>
     <style>
+        .header {
+            width: 100%;
+            height: 1rem;
+            background: black;
+            color: #fff;
+            line-height: 1rem;
+            text-align: center;
+            font-size: 0.4rem;
+        }
+
+        .nav {
+            width: 100%;
+        }
+
+        .nav li {
+            text-align: center;
+            height: 30px;
+            line-height: 30px;
+            cursor: pointer;
+        }
+
         .content {
             width: 100%;
         }
@@ -45,7 +66,14 @@
     </style>
 </head>
 <body>
-<div class="content">
+<header class="header">
+    知识总结
+</header>
+<ul class="nav">
+    <li class="nav1">前端面试题</li>
+    <li>11</li>
+</ul>
+<div class="content" style="display: none">
     <h1>1.JavaScript中如何检测一个变量是一个String类型？请写出函数实现</h1>
     <div class="box">
         <div class="item">
@@ -216,3 +244,15 @@
 
 </body>
 </html>
+<script>
+    var nav = document.getElementsByClassName('nav1')[0];
+    var content = document.getElementsByClassName('content')[0];
+    nav.onclick = function () {
+        if (content.style.display == "none") {
+            content.style.display = "block"
+        } else {
+            content.style.display = "none"
+        }
+    }
+
+</script>
