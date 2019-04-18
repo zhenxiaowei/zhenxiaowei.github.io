@@ -1,267 +1,100 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<<<<<<< HEAD
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- 删除苹果默认的工具栏和菜单栏 -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-    <meta name="apple-mobile-web-app-capable" content="yes"/><!-- 删除苹果默认的工具栏和菜单栏 -->
-    <meta name="apple-mobile-web-app-status-bar-style" content="black"/><!-- 设置苹果工具栏颜色 -->
-    <meta name="format-detection" content="telephone=no, email=no"/><!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    <!-- 设置苹果工具栏颜色 -->
+    <meta name="format-detection" content="telephone=no"/>
+    <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
     <title>甄晓伟</title>
     <link rel="stylesheet" href="css/reset.css">
-    <script src="js/common.js"></script>
     <link rel="stylesheet" href="css/index.css">
+    <script src="js/public.js"></script>
+    <style>
+        .content{
+            width: 100%;
+        }
+        .content h1{
+            width: 100%;
+            font-size: 0.2rem;
+            padding-left: 0.2rem;
+            line-height: 0.4rem;
+        }
+        .content h3{
+            width: 100%;
+            font-size: 0.16rem;
+            padding-left: 0.2rem;
+            line-height: 0.4rem;
+            font-weight: normal;
+        }
+        .content p{
+            padding: 0.4rem;
+            border: 1px solid #ddd;
+            line-height: 0.5rem;
+        }
+    </style>
 </head>
 <body>
-<h1 class="title"></h1>
-<ul class="box">
-    <li>
-        <h3>1.一个200*200的div在不同分辨率屏幕下，上下左右居中，用CSS实现</h3>
-        <h6>
-            方法一
-        </h6>
-        <p>
-            div{
-            position:absolute;
-            width:200px;
-            height:200px;
-            top:50%;
-            left:50%;
-            margin-left:-100px;
-            height:-100px;
-            z-index:100;
-            }
-        </p>
-        <h6>
-            方法二
-        </h6>
-        <p>
-            div{
-            position:absolute;
-            width:200px;
-            height:200px;
-            top:0;
-            left:0;
-            right:0;
-            bottom:0;
-            margin:auto;
-            }
-        </p>
-    </li>
-    <li>
-        <h3>2.Vue传值</h3>
-        <h6>1.父组件向子组件传值(属性传值)</h6>
-        <p>在父组件中以属性的方式绑定要传递的值</p>
-        <p>在子组件中使用props的方式接收，记得设置接收的类型</p>
-        <h6>2.子组件向父组件传值(事件传值)</h6>
-        <p>在子组件中注册事件this.$emit(titleChange,11)</p>
-        <p>在父组件中v-on:titleChange="updateChange($event)",在通过触发updateChange
-        </p>
-        <h6>3.this.$parent.url=path;直接改变父组件的属性</h6>
-        <h6>4.传值和传引用的区别</h6>
-        <p>传值指的是传String、布尔等基本类型值；传值只改变所设定的要改变的值</p>
-        <p>传引用指的是传对象、数组等引用类型值；传引用当改变一个数据的值，则与该绑定的值相关的值都会发生变化</p>
-        <h6>一、通过路由带参数进行传值</h6>
-        <p>①两个组件 A和B,A组件通过query把orderId传递给B组件（触发事件可以是点击事件、钩子函数等）</p>
-        <p>this.$router.push({ path: '/conponentsB', query: { orderId: 123 } }) // 跳转到B</p>
-        <p>②在B组件中获取A组件传递过来的参数</p>
-        <p>this.$route.query.orderId</p>
-        <h6>二、通过设置 Session Storage缓存的形式进行传递</h6>
-        <p>①两个组件A和B，在A组件中设置缓存orderData</p>
-        <p>const orderData = { 'orderId': 123, 'price': 88 }</p>
-        <p>sessionStorage.setItem('缓存名称', JSON.stringify(orderData))</p>
-        <p>②B组件就可以获取在A中设置的缓存了</p>
-        <p>const dataB = JSON.parse(sessionStorage.getItem('缓存名称'))</p>
-    </li>
-<!--    <li>
-        <h3>1.你能描述一下渐进增强和优雅降级之间的不同吗?</h3>
-        <h6>优雅降级：</h6>
-        <p>web站点在所有新式浏览器中都能正常工作，如果用户使用的是老式浏览器，则代码会检查以确认他们是否能正常工作。由于IE独特的盒模型布局问题，针对不同版本的IE的hack实践过优雅降级了，为那些无法支持功能的浏览器增加候选方案，使之在旧式浏览器上以某种形式降级体验却不至于完全失效。</p>
-        <h6>渐进增强：</h6>
-        <p>从被所有浏览器支持的基本功能开始，逐步的添加那些只有新式浏览器才支持的功能，向页面增加无害于基础浏览器的额外样式和功能。当浏览器支持时，它们会自动的呈现出来并发挥作用。</p>
-    </li>
-    <li>
-        <h3>2.线程与进程的区别</h3>
-        <p>一个程序至少有一个进程，一个进程至少有一个线程。线程的划分尺度小于进程，使得多线程程序的并发性高。</p>
-        <p></p>
-    </li>-->
+<div class="content">
+    <h1>JavaScript中如何检测一个变量是一个String类型？请写出函数实现</h1>
+    <div class="box">
+        <div class="item">
+            <h3>方案一：</h3>
+            <p>function isString(obj){<br>
+                   return typeof(obj) === "string"? true: false;<br>
+                   // returntypeof obj === "string"? true: false;<br>
+                }</p><br>
+        </div>
+        <div class="item">
+            <h3>方案二：</h3>
+            <p>function isString(obj){<br>
+                return obj.constructor === String? true: false;<br>
+                }</p>
+        </div>
+        <div class="item">
+            <h3>方案三：</h3>
+            <p>
+                function isString(obj){<br>
+                return Object.prototype.toString.call(obj) === "[object String]"?true:false;<br>
+                }<br>
+                如：<br>
+                var isstring = isString('xiaoming');<br>
+                console.log(isstring);  // true<br>
+            </p>
+        </div>
+    </div>
+    <h1>请用js去除字符串空格？</h1>
+    <div class="box">
+        <div>
+            <h3>方法一：使用replace正则匹配的方法</h3>
+            <p>
+                去除所有空格：str=str.replace(/\s*/g,"");<br>
+                去除两头空格: str = str.replace(/^\s*|\s*$/g,"");<br>
 
-</ul>
-=======
-	<meta charset="UTF-8">
-	<title>甄晓伟</title>
-	<link rel="stylesheet" href="css/style.css">
-	<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
-	<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
-	<script type="text/javascript" src="js/myjs.js"></script>
-	
-</head>
-<body>
-	<audio autoplay controls loop>
-		<source src="medio/Sarah Connor-Every Moment Of My Life.mp3"></source>
-	</audio>
-	<div id="box">
-		<div class="page1">
-			<ul class="nav">
-            	<li  class="current"><a href="javascript:;"  class="cur">首页</a></li>
-				<li><a href="javascript:;">常用软件</a></li>
-            	<li><a href="javascript:;">我的简介</a></li>
-            	<li><a href="javascript:;">我的作品</a></li>
-				<li><a href="javascript:;">我的技能</a></li>
-            </ul>
-             <img src="images/pc.png" class="p1">
-           	<div class="txt">
-            	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前端是最贴近用户的程序员，比后端、数据库、产品经理、运营、安全都近。前端的能力就是让产品从90分进化到100分，甚至更好。</p>
-            	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;信息化是以现代通信、网络、数据库技术为基础，对所研究对象各要素汇总至数
-                据库，供特定人群生活、工作、学习、辅助决策等和人类息息相关的各种行为相结合的一种技术，使用该技术后，可以极大的提高各种行为的效率，为推动人类社会进步提供极大的技术支持。</p>
-            </div>
-		</div>
-		<div class="page2">
-			<div class="content">
-                <img class="no1" src="images/1.png" alt="">
-                <img class="no2" src="images/2.png" alt="">
-                <img class="no3" src="images/3.png" alt="">
-                <img class="no4" src="images/4.png" alt="">
-                <img class="no5" src="images/5.png" alt="">
-            </div>
-        	
-		</div>
-		<div class="page3">
-		<div class="intruduce">
-            	<div class="left">
-                	<img src="images/1.jpg"/>
-                </div>
-                <div class="right">
-                	<h2 class="title">About me</h2>
-                    <ul class="inform">
-                    	<li>
-                        	<p>姓名</p>
-                            <span>甄晓伟</span>
-                        </li>
-                    	<li>
-                        	<p>出生日期</p>
-                            <span>1989.11.16</span>
-                        </li>
-                    	<li>
-                        	<p>地址</p>
-                            <span>北京</span>
-                        </li>
-                    	<li>
-                        	<p>邮件</p>
-                            <span>zhenxiaowei2056@sina.com</span>
-                        </li>
-                        <li>
-                        	<p>电话</p>
-                            <span>15990112056</span>
-                        </li>
-                        <li>
-                        	<p>政治面貌</p>
-                            <span>无</span>
-                        </li>
-                        <li>
-                        	<p>学历</p>
-                            <span>大专</span>
-                        </li>
-                        <li>
-                        	<p>技能方向</p>
-                            <span>WEB前端</span>
-                        </li>
+                去除左空格： str = str.replace( /^\s*/, “”);<br>
 
-                    </ul>
-                </div>
-            </div>
-        	
+                去除右空格： str = str.replace(/(\s*$)/g, "");<br>
+                str为要去除空格的字符串，实例如下：<br>
+                var str = " 23 23 ";<br>
+                var str2 = str.replace(/\s*/g,"");<br>
+                console.log(str2); // 2323<br>
+            </p>
+            <h3>方法二：使用str.trim()方法</h3>
+            <p>
+                str.trim()局限性：无法去除中间的空格，实例如下：<br>
+                var str = "   xiao  ming   ";<br>
+                var str2 = str.trim();<br>
+                console.log(str2);   //xiao  ming<br>
+                同理，str.trimLeft()，str.trimRight()分别用于去除字符串左右空格。<br>
+            </p>
         </div>
-		<div class="page4">
-        	<div class="cont">
-                <div class="top">
-                	 <ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-   					 </ul>
-                    <div class="btn">
-                        <span class="l">&lt;</span>
-                        <span class="r">&gt;</span>
-                    </div>
-                </div>
-                <div class="bottom">
-                	<ul>
-                    	<li>
-                        	<img src="images/QQ1.png" width="260" height="260" />
-                			<div></div>
-                			<p>自创设计实现张生记</p>
-                        </li>    
-                    	<li>
-                        	<img src="images/QQ截图2.png" width="260" height="260"/>
-                			<div></div>
-                			<p>自创设计美食站</p>
-                        </li>    
-                    	<li>
-                        	<img src="images/QQ截图3.png" width="260" height="260"/>
-                			<div></div>
-                			<p>自创设计代码海尔站</p>
-                        </li>    
-                    	<li>
-                        	<img src="images/QQ截图4.png" width="260" height="260"/>
-                			<div></div>
-                			<p>福莱盟信息技术有限公司</p>
-                        </li>       
-                    </ul>
-                </div>
-            </div>
-        </div>
-		<div class="page5">
-        <div class="outer clearfix">
-        	<div class="skill">
-                <div class="box">
-                    <div class="box1"></div>
-                    <div class="box2"></div>
-                </div>
-                <div class="txt">
-               		<p><a href="#">平面设计</a></p>
-                    <p><a href="#">网页设计</a></p>
-                    <p><a href="#">UI设计</a></p>
-                </div>
-            </div> 
-            <div class="skill1">
-                <div class="box">
-                    <div class="box1"></div>
-                    <div class="box2"></div>
-                </div>
-                <div class="txt">
-               		<p><a href="#">HTML CSS</a></p>
-                    <p><a href="#">HTML5 CSS3</a></p>
-                    <p><a href="#">Js JQUERY</a></p>
-                </div>
-            </div>      
-     	     <div class="skill2">
-                <div class="box">
-                    <div class="box1"></div>
-                    <div class="box2"></div>
-                </div>
-                <div class="txt">
-               		<p><a href="#">张生记</a></p>
-                    <p><a href="#">你是中心</a></p>
-                    <p><a href="#">中景信</a></p>
-                </div>
-            </div>    
-        </div>
-        </div>
-	</div>
-	<div class="circle">
-		<ul>
-			<li class="current"></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-		</ul>
-	</div>
->>>>>>> origin/master
+    </div>
+</div>
+
 </body>
 </html>
