@@ -36,7 +36,7 @@
         .content p {
             padding: 0.4rem;
             border: 1px solid #ddd;
-            line-height: 0.5rem;
+            line-height: 0.6rem;
             height: auto;
             word-wrap: break-word;
             word-break: break-all;
@@ -46,7 +46,7 @@
 </head>
 <body>
 <div class="content">
-    <h1>JavaScript中如何检测一个变量是一个String类型？请写出函数实现</h1>
+    <h1>1.JavaScript中如何检测一个变量是一个String类型？请写出函数实现</h1>
     <div class="box">
         <div class="item">
             <h3>方案一：</h3>
@@ -73,7 +73,7 @@
             </p>
         </div>
     </div>
-    <h1>请用js去除字符串空格？</h1>
+    <h1>2.请用js去除字符串空格？</h1>
     <div class="box">
         <div>
             <h3>方法一：使用replace正则匹配的方法</h3>
@@ -108,7 +108,7 @@
         </div>
     </div>
     <h1>
-        你如何获取浏览器URL中查询字符串中的参数？
+        3.你如何获取浏览器URL中查询字符串中的参数？
     </h1>
     <div class="box">
         <div>
@@ -135,9 +135,9 @@
         </div>
     </div>
     <h1>
-        js字符串操作函数
+        4.js字符串操作函数
     </h1>
-    <div class="box">
+    <div>
         <p>
             我这里只是列举了常用的字符串函数，具体使用方法，请参考网址。<br>
             concat() – 将两个或多个字符的文本组合起来，返回一个新的字符串。<br>
@@ -170,7 +170,7 @@
         </p>
     </div>
     <h1>
-        怎样添加、移除、移动、复制、创建和查找节点？
+        5.怎样添加、移除、移动、复制、创建和查找节点？
     </h1>
     <div class="box">
         <h3>1）创建新节点</h3>
@@ -186,6 +186,32 @@
         </h3>
         <p>getElementsByTagName() //通过标签名称<br> getElementsByName() //通过元素的Name属性的值<br> getElementById() //通过元素Id，唯一性</p>
     </div>
+    <h1>
+        6.谈谈你对MVVM开发模式的理解
+    </h1>
+    <p>
+        MVVM分为Model/View/ViewModel三者。<br>
+        Model 代表数据模型，数据和业务逻辑都在Model层中定义；<br>
+        View 代表UI视图，负责数据的展示；<br>
+        ViewModel负责监听Model中数据的改变并且控制视图的更新，处理用户交互操作；<br>
+        <br>
+        Model和View并无直接关联，而是通过ViewModel来进行联系的，Model和ViewModel之间有着双向数据绑定的联系。因此当Model中的数据改变时会触发View层的刷新，View中由于用户交互操作而改变的数据也会在Model中同步。<br>
+        <br>
+        这种模式实现了Model和View的数据自动同步，因此开发者只需要专注对数据的维护操作即可，而不需要自己操作dom。<br>
+    </p>
+    <h1>
+        7.Vue有那些指令？
+    </h1>
+    <p>
+        v-html v-show v-if v-for等等 <br>
+    </p>
+    <h1>
+        8.v-if和v-show的区别？
+    </h1>
+    <p>
+        v-show仅仅控制元素的显示和隐藏，结构还在dom中，只是操作了display的值。<br>
+        v-if会控制这个dom节点是否存在。<br>
+    </p>
 </div>
 
 </body>
