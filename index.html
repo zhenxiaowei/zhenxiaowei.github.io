@@ -19,11 +19,14 @@
 
 </head>
 <body>
-<header class="header">
-    <div class="item"><i id="showNav" class="icon inho inhoicon-liebiao"></i></div>
-    <div class="item">知识总结</div>
-    <div class="item"></div>
-</header>
+<div style="position: fixed;width: 100%;">
+    <header class="header">
+        <div class="item"><i id="showNav" class="icon inho inhoicon-liebiao"></i></div>
+        <div class="item">知识总结</div>
+        <div class="item"></div>
+    </header>
+</div>
+
 <nav class="nav" id="nav">
     <ul>
         <li>
@@ -185,10 +188,163 @@
 
 </div>
 <div class="content" id="list-2">
-    1
+    <h1>1.属性传值</h1>
+    <h3>1)父组件向子组件传值（属性传值）</h3>
+    <p>
+        在父组件中以属性的方式绑定要传递的值<br>
+        在子组件中使用props的方式接收，记得设置接收的类型 <br>
+    </p>
+    <h3>2)子组件向父组件传值（事件传值）</h3>
+    <p>
+        在子组件中注册事件this.$emit(titleChange，11)<br>
+        在父组件中v-on:titleChange="updateChange($event)" 再通过触发updatetitle（$event）（注：$event是注册事件时所传的形参）<br>
+        this.$parent.url=path;直接改变父组件的属性
+    </p>
+    <h3>3)传值和传引用的区别</h3>
+    <p>
+        传值指的是传String、布尔等基本类型值；传值只改变所设定的要改变的值 <br>
+        传引用指的是传对象、数组等引用类型值；传引用当改变一个数据的值，则与该绑定的值相关的值都会发生变化 <br>
+    </p>
+    <h1>2.路由传参</h1>
+    <h3>现有如下场景，点击父组件的li元素跳转到子组件中，并携带参数，便于子组件获取数据。</h3>
+    <h3>父组件中：</h3>
+    <xmp class="xmpStyle"><li v-for="article in articles" @click="getDescribe(article.id)"></li></xmp>
+    <h3>方案一：</h3>
+    <p>
+        getDescribe(id) { <br>
+        //直接调用$router.push 实现携带参数的跳转<br>
+        this.$router.push({<br>
+        path: `/describe/${id}`,<br>
+        })<br>
+        需要对应路由配置如下：<br>
+        {<br>
+        path: '/describe/:id',<br>
+        name: 'Describe',<br>
+        component: Describe<br>
+        }<br>
+        很显然，需要在path中添加/:id来对应 $router.push 中path携带的参数。在子组件中可以使用来获取传递的参数值。<br>
+        this.$route.params.id
+    </p>
+    <h3>方案二：</h3>
+    <p>
+        父组件中：通过路由属性中的name来确定匹配的路由，通过params来传递参数。 <br>
+        this.$router.push({<br>
+        name: 'Describe',<br>
+        params: {<br>
+        id: id<br>
+        }<br>
+        })<br>
+        对应路由配置: 注意这里不能使用:/id来传递参数了，因为父组件中，已经使用params来携带参数了。<br>
+        {<br>
+        path: '/describe',<br>
+        name: 'Describe',<br>
+        component: Describe<br>
+        }<br>
+        子组件中: 这样来获取参数<br>
+        this.$route.params.id<br>
+    </p>
+    <h3>方案三：</h3>
+    <p>
+        父组件：使用path来匹配路由，然后通过query来传递参数<br>
+        这种情况下 query传递的参数会显示在url后面?id=？<br>
+        this.$router.push({<br>
+        path: '/describe',<br>
+        query: {<br>
+        id: id<br>
+        }<br>
+        })<br>
+        对应路由配置：<br>
+        <span style="color: #000">
+                    {<br>
+        path: '/describe',<br>
+        name: 'Describe',<br>
+        component: Describe<br>
+        }<br>
+        </span>
+
+        对应子组件: 这样来获取参数<br>
+        this.$route.query.id<br>
+        这里要特别注意 在子组件中 获取参数的时候是$route.params 而不是<br>
+        $router 这很重要~~~<br>
+
+    </p>
+    <h1>
+        3.Vue钩子函数
+    </h1>
+   <p>
+       <span style="color: #000">
+           beforeCreate: function () { <br>
+            console.group('beforeCreate 创建前状态');<br>
+            console.log("%c%s", "color:red","el     : " + this.$el); //undefined<br>
+            console.log("%c%s", "color:red","data   : " + this.$data); //undefined<br>
+            console.log("%c%s", "color:red","message: " + this.message);//undefined<br>
+        },<br>
+        created: function () {<br>
+            console.group('created 创建完毕状态');<br>
+            console.log("%c%s", "color:red","el     : " + this.$el); //undefined<br>
+            console.log("%c%s", "color:green","data   : " + this.$data); //[object Object]  =>  已被初始化<br>
+            console.log("%c%s", "color:green","message: " + this.message); //Welcome Vue  =>  已被初始化<br>
+        },<br>
+        beforeMount: function () {<br>
+            console.group('beforeMount 挂载前状态');<br>
+            console.log("%c%s", "color:green","el     : " + (this.$el)); //已被初始化<br>
+            console.log(this.$el); // 当前挂在的元素<br>
+            console.log("%c%s", "color:green","data   : " + this.$data); //已被初始化<br>
+            console.log("%c%s", "color:green","message: " + this.message); //已被初始化<br>
+        },<br>
+        mounted: function () {<br>
+            console.group('mounted 挂载结束状态');<br>
+            console.log("%c%s", "color:green","el     : " + this.$el); //已被初始化<br>
+            console.log(this.$el);<br>
+            console.log("%c%s", "color:green","data   : " + this.$data); //已被初始化<br>
+            console.log("%c%s", "color:green","message: " + this.message); //已被初始化<br>
+        },<br>
+        beforeUpdate: function () {<br>
+            alert("更新前状态");<br>
+            console.group('beforeUpdate 更新前状态'); //这里指的是页面渲染新数据之前<br>
+            console.log("%c%s", "color:green","el     : " + this.$el);<br>
+            console.log(this.$el);<br>
+            console.log("%c%s", "color:green","data   : " + this.$data);<br>
+            console.log("%c%s", "color:green","message: " + this.message);<br>
+            alert("更新前状态2");<br>
+        },<br>
+        updated: function () {<br>
+            console.group('updated 更新完成状态');<br>
+            console.log("%c%s", "color:green","el     : " + this.$el);<br>
+            console.log(this.$el);<br>
+            console.log("%c%s", "color:green","data   : " + this.$data);<br>
+            console.log("%c%s", "color:green","message: " + this.message);<br>
+        },<br>
+        beforeDestroy: function () {<br>
+            console.group('beforeDestroy 销毁前状态');<br>
+            console.log("%c%s", "color:red","el     : " + this.$el);<br>
+            console.log(this.$el);<br>
+            console.log("%c%s", "color:red","data   : " + this.$data);<br>
+            console.log("%c%s", "color:red","message: " + this.message);<br>
+        },<br>
+        destroyed: function () {<br>
+            console.group('destroyed 销毁完成状态');<br>
+            console.log("%c%s", "color:red","el     : " + this.$el);<br>
+            console.log(this.$el);<br>
+            console.log("%c%s", "color:red","data   : " + this.$data);<br>
+            console.log("%c%s", "color:red","message: " + this.message)<br>
+        }
+       </span>
+   </p>
 </div>
 <div class="content" id="list-3">
-    111
+    <h1>1.git从远程仓库gitLab上拉取指定分支到本地仓库</h1>
+    <h3>例如：将gitLab 上的dev分支拉取到本地</h3>
+    <p>
+        1 创建一个文件夹<br>
+        2 git init<br>
+        3 与远程仓库建立连接：git remote add origin XXXXX.git<br>
+        4 把远程分支拉到本地 git fetch origin 远程分支名称<br>
+        5、在本地创建分支dev并切换到该分支<br>
+        git checkout -b dev(本地分支名称) origin/dev(远程分支名称)<br>
+        6、把某个分支上的内容都拉取到本地<br>
+        git pull origin dev(远程分支名称)<br>
+    </p>
 </div>
 </body>
 </html>
