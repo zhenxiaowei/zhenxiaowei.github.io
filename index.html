@@ -27,8 +27,7 @@
 <nav class="nav" id="nav">
     <ul>
         <li>
-            <a id="close"><i class="icon inho inhoicon-close"></i>
-            </a>
+            <i id="close" class="icon inho inhoicon-close"></i>
         </li>
         <li class="list-1">前端面试题</li>
         <li class="list-2">Vue学习</li>
@@ -202,9 +201,19 @@
             $(".nav").animate({'width': '4rem'}, "slow");
         } else {
             $("#nav").animate({'width': '0'}, "slow");
-            if(event.srcElement.className!==''){
-                $(".content").hide();
-                $("#"+event.srcElement.className).show();
+            switch (event.srcElement.className) {
+                case 'list-1':
+                    $(".content").hide();
+                    $("#" + event.srcElement.className).show();
+                    break;
+                case 'list-2':
+                    $(".content").hide();
+                    $("#" + event.srcElement.className).show();
+                    break;
+                case 'list-3':
+                    $(".content").hide();
+                    $("#" + event.srcElement.className).show();
+                    break;
             }
         }
     });
