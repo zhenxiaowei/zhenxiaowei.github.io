@@ -13,207 +13,150 @@
     <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
     <title>甄晓伟</title>
     <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/iconfont.css">
     <link rel="stylesheet" href="css/index.css">
     <script src="js/public.js"></script>
-    <style>
-        .header {
-            width: 100%;
-            height: 1rem;
-            background: black;
-            color: #fff;
-            line-height: 1rem;
-            text-align: center;
-            font-size: 0.4rem;
-        }
 
-        .nav {
-            padding: 0.5rem;
-        }
-
-        .nav li {
-            text-align: center;
-            height: 0.7rem;
-            line-height: 0.7rem;
-            cursor: pointer;
-        }
-
-        .content {
-            width: 100%;
-        }
-
-        .content h1 {
-            width: 100%;
-            padding-left: 0.2rem;
-            line-height: 0.7rem;
-        }
-
-        .content h3 {
-            width: 100%;
-            padding-left: 0.2rem;
-            line-height: 0.6rem;
-            font-weight: normal;
-        }
-
-        .content p {
-            padding: 0.4rem;
-            border: 1px solid #ddd;
-            line-height: 0.6rem;
-            height: auto;
-            word-wrap: break-word;
-            word-break: break-all;
-            overflow: hidden;
-        }
-    </style>
 </head>
 <body>
 <header class="header">
-    知识总结
+    <div class="item"><i id="showNav" class="icon inho inhoicon-liebiao"></i></div>
+    <div class="item">知识总结</div>
+    <div class="item"></div>
 </header>
-<ul class="nav">
-    <li class="nav1">前端面试题1</li>
-    <li>前端面试题3</li>
-</ul>
-<div class="content">
+<nav class="nav" id="nav">
+    <ul>
+        <li>
+            <a id="close"><i class="icon inho inhoicon-close"></i>
+            </a>
+        </li>
+        <li class="list-1">前端面试题</li>
+        <li class="list-2">Vue学习</li>
+        <li class="list-3">git学习</li>
+    </ul>
+</nav>
+<div class="content" id="list-1" style="display: block">
+
     <h1>1.JavaScript中如何检测一个变量是一个String类型？请写出函数实现</h1>
-    <div class="box">
-        <div class="item">
-            <h3>方案一：</h3>
-            <p>function isString(obj){<br>
-                return typeof(obj) === "string"? true: false;<br>
-                // returntypeof obj === "string"? true: false;<br>
-                }</p><br>
-        </div>
-        <div class="item">
-            <h3>方案二：</h3>
-            <p>function isString(obj){<br>
-                return obj.constructor === String? true: false;<br>
-                }</p>
-        </div>
-        <div class="item">
-            <h3>方案三：</h3>
-            <p>
-                function isString(obj){<br>
-                return Object.prototype.toString.call(obj) === "[object String]"?true:false;<br>
-                }<br>
-                如：<br>
-                var isstring = isString('xiaoming');<br>
-                console.log(isstring); // true<br>
-            </p>
-        </div>
-    </div>
+    <h3>方案一：</h3>
+    <p>function isString(obj){<br>
+        return typeof(obj) === "string"? true: false;<br>
+        // returntypeof obj === "string"? true: false;<br>
+        }</p><br>
+    <h3>方案二：</h3>
+    <p>function isString(obj){<br>
+        return obj.constructor === String? true: false;<br>
+        }</p>
+    <h3>方案三：</h3>
+    <p>
+        function isString(obj){<br>
+        return Object.prototype.toString.call(obj) === "[object String]"?true:false;<br>
+        }<br>
+        如：<br>
+        var isstring = isString('xiaoming');<br>
+        console.log(isstring); // true<br>
+    </p>
     <h1>2.请用js去除字符串空格？</h1>
-    <div class="box">
-        <div>
-            <h3>方法一：使用replace正则匹配的方法</h3>
-            <p>
-                去除所有空格：str=str.replace(/\s*/g,"");<br>
-                去除两头空格: str = str.replace(/^\s*|\s*$/g,"");<br>
+    <h3>方法一：使用replace正则匹配的方法</h3>
+    <p>
+        去除所有空格：str=str.replace(/\s*/g,"");<br>
+        去除两头空格: str = str.replace(/^\s*|\s*$/g,"");<br>
 
-                去除左空格： str = str.replace( /^\s*/, “”);<br>
+        去除左空格： str = str.replace( /^\s*/, “”);<br>
 
-                去除右空格： str = str.replace(/(\s*$)/g, "");<br>
-                str为要去除空格的字符串，实例如下：<br>
-                var str = " 23 23 ";<br>
-                var str2 = str.replace(/\s*/g,"");<br>
-                console.log(str2); // 2323<br>
-            </p>
-            <h3>方法二：使用str.trim()方法</h3>
-            <p>
-                str.trim()局限性：无法去除中间的空格，实例如下：<br>
-                var str = " xiao ming ";<br>
-                var str2 = str.trim();<br>
-                console.log(str2); //xiao ming<br>
-                同理，str.trimLeft()，str.trimRight()分别用于去除字符串左右空格。<br>
-            </p>
-            <h3>方法三：使用jquery,$.trim(str)方法</h3>
-            <p>
-                $.trim(str)局限性：无法去除中间的空格，实例如下：<br>
+        去除右空格： str = str.replace(/(\s*$)/g, "");<br>
+        str为要去除空格的字符串，实例如下：<br>
+        var str = " 23 23 ";<br>
+        var str2 = str.replace(/\s*/g,"");<br>
+        console.log(str2); // 2323<br>
+    </p>
+    <h3>方法二：使用str.trim()方法</h3>
+    <p>
+        str.trim()局限性：无法去除中间的空格，实例如下：<br>
+        var str = " xiao ming ";<br>
+        var str2 = str.trim();<br>
+        console.log(str2); //xiao ming<br>
+        同理，str.trimLeft()，str.trimRight()分别用于去除字符串左右空格。<br>
+    </p>
+    <h3>方法三：使用jquery,$.trim(str)方法</h3>
+    <p>
+        $.trim(str)局限性：无法去除中间的空格，实例如下：<br>
 
-                var str = " xiao ming ";<br>
-                var str2 = $.trim(str)<br>
-                console.log(str2); // xiao ming<br>
-            </p>
-        </div>
-    </div>
+        var str = " xiao ming ";<br>
+        var str2 = $.trim(str)<br>
+        console.log(str2); // xiao ming<br>
+    </p>
     <h1>
         3.你如何获取浏览器URL中查询字符串中的参数？
     </h1>
-    <div class="box">
-        <div>
-            <p>
-                测试地址为：http://www.runoob.com/jquery/misc-trim.html? channelid=12333&name=xiaoming&age=23
-                实例如下：<br>
-                function showWindowHref(){<br>
-                var sHref = window.location.href;<br>
-                var args = sHref.split('?');<br>
-                if(args[0] == sHref){<br>
-                return "";<br>
-                }<br>
-                var arr = args[1].split('&');<br>
-                var obj = {};<br>
-                for(var i = 0;i< arr.length;i++){<br>
-                var arg = arr[i].split('=');<br>
-                obj[arg[0]] = arg[1];<br>
-                }<br>
-                return obj;<br>
-                }<br>
-                var href = showWindowHref(); // obj<br>
-                console.log(href['name']); // xiaoming<br>
-            </p>
-        </div>
-    </div>
+    <p>
+        测试地址为：http://www.runoob.com/jquery/misc-trim.html? channelid=12333&name=xiaoming&age=23<br>
+        实例如下：<br>
+        function showWindowHref(){<br>
+        var sHref = window.location.href;<br>
+        var args = sHref.split('?');<br>
+        if(args[0] == sHref){<br>
+        return "";<br>
+        }<br>
+        var arr = args[1].split('&');<br>
+        var obj = {};<br>
+        for(var i = 0;i< arr.length;i++){<br>
+        var arg = arr[i].split('=');<br>
+        obj[arg[0]] = arg[1];<br>
+        }<br>
+        return obj;<br>
+        }<br>
+        var href = showWindowHref(); // obj<br>
+        console.log(href['name']); // xiaoming<br>
+    </p>
     <h1>
         4.js字符串操作函数
     </h1>
-    <div>
-        <p>
-            我这里只是列举了常用的字符串函数，具体使用方法，请参考网址。<br>
-            concat() – 将两个或多个字符的文本组合起来，返回一个新的字符串。<br>
+    <p>
+        我这里只是列举了常用的字符串函数，具体使用方法，请参考网址。<br>
+        concat() – 将两个或多个字符的文本组合起来，返回一个新的字符串。<br>
 
-            indexOf() – 返回字符串中一个子串第一处出现的索引。如果没有匹配项，返回 -1 。<br>
+        indexOf() – 返回字符串中一个子串第一处出现的索引。如果没有匹配项，返回 -1 。<br>
 
-            charAt() – 返回指定位置的字符。<br>
+        charAt() – 返回指定位置的字符。<br>
 
-            lastIndexOf() – 返回字符串中一个子串最后一处出现的索引，如果没有匹配项，返回 -1 。<br>
+        lastIndexOf() – 返回字符串中一个子串最后一处出现的索引，如果没有匹配项，返回 -1 。<br>
 
-            match() – 检查一个字符串是否匹配一个正则表达式。<br>
+        match() – 检查一个字符串是否匹配一个正则表达式。<br>
 
-            substr() 函数 -- 返回从string的startPos位置，长度为length的字符串<br>
+        substr() 函数 -- 返回从string的startPos位置，长度为length的字符串<br>
 
-            substring() – 返回字符串的一个子串。传入参数是起始位置和结束位置。<br>
+        substring() – 返回字符串的一个子串。传入参数是起始位置和结束位置。<br>
 
-            slice() – 提取字符串的一部分，并返回一个新字符串。<br>
+        slice() – 提取字符串的一部分，并返回一个新字符串。<br>
 
-            replace() – 用来查找匹配一个正则表达式的字符串，然后使用新字符串代替匹配的字符串。<br>
+        replace() – 用来查找匹配一个正则表达式的字符串，然后使用新字符串代替匹配的字符串。<br>
 
-            search() – 执行一个正则表达式匹配查找。如果查找成功，返回字符串中匹配的索引值。否则返回 -1 。<br>
+        search() – 执行一个正则表达式匹配查找。如果查找成功，返回字符串中匹配的索引值。否则返回 -1 。<br>
 
-            split() – 通过将字符串划分成子串，将一个字符串做成一个字符串数组。<br>
+        split() – 通过将字符串划分成子串，将一个字符串做成一个字符串数组。<br>
 
-            length – 返回字符串的长度，所谓字符串的长度是指其包含的字符的个数。<br>
+        length – 返回字符串的长度，所谓字符串的长度是指其包含的字符的个数。<br>
 
-            toLowerCase() – 将整个字符串转成小写字母。<br>
+        toLowerCase() – 将整个字符串转成小写字母。<br>
 
-            toUpperCase() – 将整个字符串转成大写字母。<br>
-        </p>
-    </div>
+        toUpperCase() – 将整个字符串转成大写字母。<br>
+    </p>
     <h1>
         5.怎样添加、移除、移动、复制、创建和查找节点？
     </h1>
-    <div class="box">
-        <h3>1）创建新节点</h3>
-        <p>createDocumentFragment() //创建一个DOM片段<br>createElement() //创建一个具体的元素<br>createTextNode() //创建一个文本节点<br>
-        </p>
-        <h3>
-            2）添加、移除、替换、插入
-        </h3>
-        <p>appendChild() //添加<br>removeChild() //移除<br>replaceChild() //替换<br>insertBefore() //插入<br>
-        </p>
-        <h3>
-            3）查找
-        </h3>
-        <p>getElementsByTagName() //通过标签名称<br> getElementsByName() //通过元素的Name属性的值<br> getElementById() //通过元素Id，唯一性</p>
-    </div>
+    <h3>1）创建新节点</h3>
+    <p>createDocumentFragment() //创建一个DOM片段<br>createElement() //创建一个具体的元素<br>createTextNode() //创建一个文本节点<br>
+    </p>
+    <h3>
+        2）添加、移除、替换、插入
+    </h3>
+    <p>appendChild() //添加<br>removeChild() //移除<br>replaceChild() //替换<br>insertBefore() //插入<br>
+    </p>
+    <h3>
+        3）查找
+    </h3>
+    <p>getElementsByTagName() //通过标签名称<br> getElementsByName() //通过元素的Name属性的值<br> getElementById() //通过元素Id，唯一性</p>
     <h1>
         6.谈谈你对MVVM开发模式的理解
     </h1>
@@ -240,19 +183,29 @@
         v-show仅仅控制元素的显示和隐藏，结构还在dom中，只是操作了display的值。<br>
         v-if会控制这个dom节点是否存在。<br>
     </p>
-</div>
 
+</div>
+<div class="content" id="list-2">
+    1
+</div>
+<div class="content" id="list-3">
+    111
+</div>
 </body>
 </html>
+<script src="js/jquery.js"></script>
 <script>
-    var nav = document.getElementsByClassName('nav1')[0];
-    var content = document.getElementsByClassName('content')[0];
-    nav.onclick = function () {
-        if (content.style.display == "none") {
-            content.style.display = "block"
+    $(document).click(function () {
+        if (event.srcElement.id == "nav") {
+            $(".nav").animate({'width': '4rem'}, "slow");
+        } else if (event.srcElement.id == "showNav") {
+            $(".nav").animate({'width': '4rem'}, "slow");
         } else {
-            content.style.display = "none"
+            $("#nav").animate({'width': '0'}, "slow");
+            if(event.srcElement.className!==''){
+                $(".content").hide();
+                $("#"+event.srcElement.className).show();
+            }
         }
-    }
-
+    });
 </script>
