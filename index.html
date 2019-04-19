@@ -268,11 +268,21 @@
         $router 这很重要~~~<br>
 
     </p>
+    <h1>3.兄弟组件通信</h1>
+    <p>
+        1.var bus = new Vue();<br>
+        2.接收方<br>
+        bus.$on('eventName',function(msg){})<br>
+        3.发送方<br>
+        bus.$emit('eventName',123);<br>
+    </p>
     <h1>
         3.Vue钩子函数
     </h1>
     <h3>1)beforeCreate 创建前状态</h3>
     <p>
+        官方说明：在实例初始化之后，数据观测(data observer) 和 event/watcher 事件配置之前被调用。<br>
+        解释：这个时期，this变量还不能使用，在data下的数据，和methods下的方法，watcher中的事件都不能获得到；<br>
         beforeCreate: function () { <br>
         console.group('beforeCreate 创建前状态');<br>
         console.log("%c%s", "color:red","el     : " + this.$el); //undefined<br>
@@ -282,6 +292,8 @@
     </p>
     <h3>2)created 创建完毕状态</h3>
     <p>
+        官方说明：实例已经创建完成之后被调用。在这一步，实例已完成以下的配置：数据观测(data observer)，属性和方法的运算， watch/event 事件回调。然而，挂载阶段还没开始，$el 属性目前不可见。<br>
+        解释说明： 这个时候可以操作vue实例中的数据和各种方法，但是还不能对"dom"节点进行操作；<br>
         created: function () {<br>
         console.group('created 创建完毕状态');<br>
         console.log("%c%s", "color:red","el     : " + this.$el); //undefined<br>
@@ -303,6 +315,8 @@
         4)mounted 挂载结束状态
     </h3>
     <p>
+        官方说明：el 被新创建的 vm.$el 替换，并挂载到实例上去之后调用该钩子。如果root实例挂载了一个文档内元素，当 mounted 被调用时 vm.$el 也在文档内。<br>
+        解释说明：挂载完毕，这时dom节点被渲染到文档内，一些需要dom的操作在此时才能正常进行<br>
         mounted: function () {<br>
         console.group('mounted 挂载结束状态');<br>
         console.log("%c%s", "color:green","el     : " + this.$el); //已被初始化<br>
