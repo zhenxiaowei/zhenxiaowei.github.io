@@ -271,66 +271,88 @@
     <h1>
         3.Vue钩子函数
     </h1>
-   <p>
-       <span style="color: #000">
-           beforeCreate: function () { <br>
-            console.group('beforeCreate 创建前状态');<br>
-            console.log("%c%s", "color:red","el     : " + this.$el); //undefined<br>
-            console.log("%c%s", "color:red","data   : " + this.$data); //undefined<br>
-            console.log("%c%s", "color:red","message: " + this.message);//undefined<br>
+    <h3>1)beforeCreate 创建前状态</h3>
+    <p>
+        beforeCreate: function () { <br>
+        console.group('beforeCreate 创建前状态');<br>
+        console.log("%c%s", "color:red","el     : " + this.$el); //undefined<br>
+        console.log("%c%s", "color:red","data   : " + this.$data); //undefined<br>
+        console.log("%c%s", "color:red","message: " + this.message);//undefined<br>
         },<br>
+    </p>
+    <h3>2)created 创建完毕状态</h3>
+    <p>
         created: function () {<br>
-            console.group('created 创建完毕状态');<br>
-            console.log("%c%s", "color:red","el     : " + this.$el); //undefined<br>
-            console.log("%c%s", "color:green","data   : " + this.$data); //[object Object]  =>  已被初始化<br>
-            console.log("%c%s", "color:green","message: " + this.message); //Welcome Vue  =>  已被初始化<br>
+        console.group('created 创建完毕状态');<br>
+        console.log("%c%s", "color:red","el     : " + this.$el); //undefined<br>
+        console.log("%c%s", "color:green","data   : " + this.$data); //[object Object]  =>  已被初始化<br>
+        console.log("%c%s", "color:green","message: " + this.message); //Welcome Vue  =>  已被初始化<br>
         },<br>
+    </p>
+    <h3>3)beforeMount 挂载前状态</h3>
+    <p>
         beforeMount: function () {<br>
-            console.group('beforeMount 挂载前状态');<br>
-            console.log("%c%s", "color:green","el     : " + (this.$el)); //已被初始化<br>
-            console.log(this.$el); // 当前挂在的元素<br>
-            console.log("%c%s", "color:green","data   : " + this.$data); //已被初始化<br>
-            console.log("%c%s", "color:green","message: " + this.message); //已被初始化<br>
+        console.group('beforeMount 挂载前状态');<br>
+        console.log("%c%s", "color:green","el     : " + (this.$el)); //已被初始化<br>
+        console.log(this.$el); // 当前挂在的元素<br>
+        console.log("%c%s", "color:green","data   : " + this.$data); //已被初始化<br>
+        console.log("%c%s", "color:green","message: " + this.message); //已被初始化<br>
         },<br>
+    </p>
+    <h3>
+        4)mounted 挂载结束状态
+    </h3>
+    <p>
         mounted: function () {<br>
-            console.group('mounted 挂载结束状态');<br>
-            console.log("%c%s", "color:green","el     : " + this.$el); //已被初始化<br>
-            console.log(this.$el);<br>
-            console.log("%c%s", "color:green","data   : " + this.$data); //已被初始化<br>
-            console.log("%c%s", "color:green","message: " + this.message); //已被初始化<br>
+        console.group('mounted 挂载结束状态');<br>
+        console.log("%c%s", "color:green","el     : " + this.$el); //已被初始化<br>
+        console.log(this.$el);<br>
+        console.log("%c%s", "color:green","data   : " + this.$data); //已被初始化<br>
+        console.log("%c%s", "color:green","message: " + this.message); //已被初始化<br>
         },<br>
+    </p>
+    <h3>5)beforeUpdate 更新前状态</h3>
+    <p>
         beforeUpdate: function () {<br>
-            alert("更新前状态");<br>
-            console.group('beforeUpdate 更新前状态'); //这里指的是页面渲染新数据之前<br>
-            console.log("%c%s", "color:green","el     : " + this.$el);<br>
-            console.log(this.$el);<br>
-            console.log("%c%s", "color:green","data   : " + this.$data);<br>
-            console.log("%c%s", "color:green","message: " + this.message);<br>
-            alert("更新前状态2");<br>
+        alert("更新前状态");<br>
+        console.group('beforeUpdate 更新前状态'); //这里指的是页面渲染新数据之前<br>
+        console.log("%c%s", "color:green","el     : " + this.$el);<br>
+        console.log(this.$el);<br>
+        console.log("%c%s", "color:green","data   : " + this.$data);<br>
+        console.log("%c%s", "color:green","message: " + this.message);<br>
+        alert("更新前状态2");<br>
         },<br>
+    </p>
+    <h3>6)updated 更新完成状态</h3>
+    <p>
         updated: function () {<br>
-            console.group('updated 更新完成状态');<br>
-            console.log("%c%s", "color:green","el     : " + this.$el);<br>
-            console.log(this.$el);<br>
-            console.log("%c%s", "color:green","data   : " + this.$data);<br>
-            console.log("%c%s", "color:green","message: " + this.message);<br>
+        console.group('updated 更新完成状态');<br>
+        console.log("%c%s", "color:green","el     : " + this.$el);<br>
+        console.log(this.$el);<br>
+        console.log("%c%s", "color:green","data   : " + this.$data);<br>
+        console.log("%c%s", "color:green","message: " + this.message);<br>
         },<br>
+    </p>
+    <h3>7)beforeDestroy 销毁前状态</h3>
+    <p>
         beforeDestroy: function () {<br>
-            console.group('beforeDestroy 销毁前状态');<br>
-            console.log("%c%s", "color:red","el     : " + this.$el);<br>
-            console.log(this.$el);<br>
-            console.log("%c%s", "color:red","data   : " + this.$data);<br>
-            console.log("%c%s", "color:red","message: " + this.message);<br>
+        console.group('beforeDestroy 销毁前状态');<br>
+        console.log("%c%s", "color:red","el     : " + this.$el);<br>
+        console.log(this.$el);<br>
+        console.log("%c%s", "color:red","data   : " + this.$data);<br>
+        console.log("%c%s", "color:red","message: " + this.message);<br>
         },<br>
+    </p>
+    <h3>8)destroyed 销毁完成状态</h3>
+    <p>
         destroyed: function () {<br>
-            console.group('destroyed 销毁完成状态');<br>
-            console.log("%c%s", "color:red","el     : " + this.$el);<br>
-            console.log(this.$el);<br>
-            console.log("%c%s", "color:red","data   : " + this.$data);<br>
-            console.log("%c%s", "color:red","message: " + this.message)<br>
+        console.group('destroyed 销毁完成状态');<br>
+        console.log("%c%s", "color:red","el     : " + this.$el);<br>
+        console.log(this.$el);<br>
+        console.log("%c%s", "color:red","data   : " + this.$data);<br>
+        console.log("%c%s", "color:red","message: " + this.message)<br>
         }
-       </span>
-   </p>
+    </p>
 </div>
 <div class="content" id="list-3">
     <h1>1.git从远程仓库gitLab上拉取指定分支到本地仓库</h1>
@@ -361,14 +383,17 @@
                 case 'list-1':
                     $(".content").hide();
                     $("#" + event.srcElement.className).show();
+                    document.body.scrollTop = document.documentElement.scrollTop = 0;
                     break;
                 case 'list-2':
                     $(".content").hide();
                     $("#" + event.srcElement.className).show();
+                    document.body.scrollTop = document.documentElement.scrollTop = 0;
                     break;
                 case 'list-3':
                     $(".content").hide();
                     $("#" + event.srcElement.className).show();
+                    document.body.scrollTop = document.documentElement.scrollTop = 0;
                     break;
             }
         }
