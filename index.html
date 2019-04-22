@@ -367,6 +367,66 @@
         console.log("%c%s", "color:red","message: " + this.message)<br>
         }
     </p>
+    <h1>4.Element UI</h1>
+    <h3>1)简介</h3>
+    <p>
+        Element UI是饿了么团队提供的一套基于Vue2.0的组件库，可以快速搭建网站，提高开发效率 <br>
+        ElementUI  PC端   https://element.eleme.cn/#/zh-CN<br>
+        MintUI 移动端  http://mint-ui.github.io/#!/zh-cn<br>
+        使用方法类似
+    </p>
+    <h3>2)快速上手</h3>
+    <h3>2.1 安装elment ui</h3>
+    <p>cnpm install element-ui -S</p>
+    <h3> 2.2 在main.js中引入并使用组件</h3>
+    <p>
+        import ElementUI from 'element-ui'<br>
+        import 'element-ui/lib/theme-default/index.css' <br>
+        //该样式文件需要单独引入<br>
+        Vue.use(ElementUI);<br>
+        这种方式引入了ElementUI中所有的组件<br>
+    </p>
+    <h3>2.3 在webpack.config.js中添加loader </h3>
+    <p>
+        CSS样式和字体图标都需要由相应的loader来加载，所以需要style-loader、css-loader<br>
+        默认并没有style-loader模块，所以需要单独安装<br>
+        cnpm install style-loader --save-dev<br>
+    </p>
+    <h3>2.4 使用less</h3>
+    <p>
+        安装loader，需要两个：less、less-loader<br>
+        cnpm install less less-loader -D<br>
+        在webpack.config.js中添加loader<br>
+    </p>
+<h3>3.)按需引入组</h3>
+    <h3>3.1 安装babel-plugin-component</h3>
+    <p>cnpm install babel-plugin-component -D  </p>
+    <h3>3.2 配置.babelrc文件</h3>
+    <p>
+        {<br>
+        "presets": [["es2015", { "modules": false }]],<br>
+        "plugins": [<br>
+        [<br>
+        "component",<br>
+        {<br>
+        "libraryName": "element-ui",<br>
+        "styleLibraryName": "theme-chalk"<br>
+        }<br>
+        ]<br>
+        ]<br>
+        }<br>
+    </p>
+    <h3>3.3  只引入需要的插件</h3>
+    <p>
+        接下来，如果你只希望引入部分组件，比如 Button 和 Select，那么需要在 main.js 中写入以下内容：<br>
+        import { Button, Select } from 'element-ui';<br>
+        Vue.component(Button.name, Button);<br>
+        Vue.component(Select.name, Select);<br>
+        /* 或写为<br>
+        * Vue.use(Button)<br>
+        * Vue.use(Select)<br>
+        */<br>
+    </p>
 </div>
 <div class="content" id="list-3">
     <h1>1.git从远程仓库gitLab上拉取指定分支到本地仓库</h1>
