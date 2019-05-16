@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>总结</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- 删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <!-- 设置苹果工具栏颜色 -->
+    <meta name="format-detection" content="telephone=no"/>
+    <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/public.js"></script>
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/content.css">
+</head>
+<body>
+<header class="header">输入URL，发生了什么</header>
+<section class="content">
+    <p>
+        1、输入URL，浏览器会开启一个线程处理这个请求，同时远程DNS服务器启动一个DNS查询，这能使浏览器获得请求的IP地址 <br>
+        <br>
+        2、浏览器与web服务器通过TCP三次握手协商建立一个TCP/IP连接，该握手包含：<br>
+        1)一个同步报文<br>
+        2)一个同步应答报文<br>
+        3)一个应答报文<br>
+        该握手由浏览器发出请求<br>
+        <br>
+        3、一旦TCP/IP连接建立，浏览器会向远程服务器发送HTTP的GET请求，远程服务器找到资源，用HTTP响应返回该资源，值为200表示一个正确的响应<br>
+        <br>
+        4、此时，web服务器提供资源，客户端开始下载资源<br>
+    </p>
+
+
+</section>
+</body>
+</html>

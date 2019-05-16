@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>总结</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- 删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <!-- 设置苹果工具栏颜色 -->
+    <meta name="format-detection" content="telephone=no"/>
+    <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/public.js"></script>
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/content.css">
+</head>
+<body>
+<header class="header">面试题</header>
+<section class="content">
+    <h3>1、content-box和border-box,为什么看起来content-box更合理，但还是经常使用border-box？</h3>
+    <p>
+        content-box是W3C标准盒模型，元素宽度+padding+border <br>
+        <br>
+        border-box是IE的怪异盒模型，它的元素宽度就是内容宽度，内容的宽度包含了padding和border<br>
+        <br>
+        比如有的时候在元素基础上添加padding或border会将布局撑破  但是使用border-box就可以轻松完成<br>
+        <br>
+    </p>
+    <h3>2、实现三个div等分排在一行（考察border-box）</h3>
+    <p>
+        设置为弹性盒子  display:flex;<br>
+        每一个内容项    border-box: width 33.33%; flex: 1;<br>
+        例如：border-box--transform
+    </p>
+    <h3>3、flex属性值是多少？</h3>
+    <p>
+        flex属性是flex-grow,flex-shrink和flex-basis的简写<br>
+        flex-grow：属性定义项目的放大比例，默认为0；<br>
+        flex-shrink：属性定义项目的缩小比例，默认为1；<br>
+        flex-basis：属性定义项目的固定空间<br>
+    </p>
+    <h3>4、实现一个div左上角到右下角的移动，有哪些方法？怎么实现？</h3>
+    <p>
+        改变left的值为window宽度-div宽度   top的值为window的高度=div高度<br>
+        jquery的animate方法<br>
+        css3的transition<br>
+    </p>
+    <h3>5、rem和em的区别</h3>
+    <p>
+        rem相对于根元素，em相对于父元素
+    </p>
+    <h3>6、清除浮动</h3>
+    <h4>1)父容器结尾插入空标签:</h4>
+    <xmp>
+        <div style="clear:both;"></div>
+    </xmp>
+    <h4>2)css伪元素:</h4>
+    <xmp>
+        .clear:after {
+            display: block;
+            height: 0;
+            content: "";
+            clear: both;
+        }
+    </xmp>
+    <h3>7、position的值分别是相对于谁定位的？</h3>
+    <p>
+        relative:相对于自己本身在正常的文档流的位置进行定位<br>
+        absolute:生成绝对定位，相对于最近一级不为static的父元素进行定位<br>
+        fixed：相对于浏览器窗口进行定位<br>
+        static：默认值，没有定位，元素出现在正常的文档流中<br>
+    </p>
+    <h3>8、css选择符有哪些？优先级算法如何计算？css3新增伪类有哪些？
+    </h3>
+    <h4>1)    选择符：</h4>
+    <p>
+        id选择器(#myid)<br>
+        类选择器(.myCalssName)<br>
+        标签选择器(div,p,h1)<br>
+        相邻选择器(h1+p)<br>
+        子选择器(ul>li)<br>
+        后代选择器(li a)<br>
+        通配符选择器(*)<br>
+        属性选择器(button[disabled="true"])<br>
+        伪类选择器(a:hover,li:nth-child)<br>
+    </p>
+    <h4>2)优先级：</h4>
+    <p>
+        !important>行内样式>id>class>伪类
+    </p>
+    <h4>3)css3新增伪类有哪些：</h4>
+    <p>
+        p:first-of-type选择器匹配属于其父元素的特定类型的首个子元素的每个元素 <br>
+        p:last-of-type选择器匹配属于其父元素的特定类型的最后一个子元素的每个元素 <br>
+        p:only-child:选择器匹配属于其父元素的唯一子元素的每个元素 <br>
+        p:nth-child(2)选择器匹配属于其父元素的第N个子元素，不论元素的类型 <br>
+        :enabled :disabled 表单控件的禁用状态 <br>
+        :checked 选择器匹配每个选中的输入元素(单选和复选) <br>
+    </p>
+    <h3>9、哪些属性可以继承？</h3>
+    <h4>1)字体系列属性</h4>
+    <p>
+        font:组合字体 <br>
+        font-family:规定元素的字体系列 <br>
+        font-weight:设置字体的粗细 <br>
+        font-size:设置字体的尺寸 <br>
+        font-style:定义字体的风格 <br>
+    </p>
+    <h4>2)文本系列属性</h4>
+    <p>
+        text-indent:文本缩进 <br>
+        text-align:文本对齐方式 <br>
+        line-height:行高 <br>
+        word-spacing:增加或减少单词间的空白(即字间隔) <br>
+        letter-spacing:增加或减少字符间的空白(字符间距) <br>
+        text-transform:控制文本的大小写 <br>
+        direction:规定文本的书写方向 <br>
+        color:文本颜色 <br>
+    </p>
+    <h4>3)元素可见性</h4>
+    <p>
+        visibility
+    </p>
+<h3>10、介绍sass</h3>
+    <p>
+        定义变量，css嵌套，允许在代码中使用算式，支持if判断for循环
+    </p>
+
+</section>
+</body>
+</html>

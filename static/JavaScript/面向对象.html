@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>总结</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- 删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <!-- 设置苹果工具栏颜色 -->
+    <meta name="format-detection" content="telephone=no"/>
+    <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/public.js"></script>
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/content.css">
+</head>
+<body>
+<header class="header">面向对象</header>
+<section class="content">
+   <h3>一、概念</h3>
+    <p>
+        对象：任何东西都是对象（属性和方法的集合）<br>
+        面向对象：和对象打交道 <br>
+    </p>
+    <p>
+        1、对象的组成<br>
+        属性：有归属的变量<br>
+        方法：有归属的函数<br>
+        事件：在js面向对象里，视同为方法<br>
+        <br>
+        2、类、实例<br>
+        类：模板，没有实际的功能<br>
+        实例：根据模板（类）造出的一个具体的东西<br>
+        function Person(){}---Person类<br>
+        let p1=new Person()---p1实例<br>
+        类--实例化--实例<br>
+        <br>
+        3.面向对象的三大特点：<br>
+        1、封装：把细节包起来，用户只管只有，不要关心是怎么实现的<br>
+        2、继承：子类可以直接使用父类的功能（东西）<br>
+        3、多态：在js中没有<br>
+        能new出来的，肯定是函数<br>
+        任何东西都是对象<br>
+        new一个类的实例，这个类的构造函数自动执行<br>
+    </p>
+    <h3>二、创建对象</h3>
+    <h3>1、字面量方式创建对象，并访问属性和方法</h3>
+    <p>
+        (1)字面量创建对象，空对象
+    </p>
+    <xmp>
+        var obj={};
+    </xmp>
+     <p>(2)字面量创建对象，非空对象</p>
+    <xmp>
+        var obj={
+            name:"zxw",
+            age:30,
+            run:function(){
+                console.log("会跑")
+            },
+            sleep:function(hours){
+                console.log("睡"：+hours+"个小时")
+            }
+        }
+    </xmp>
+    <p>
+        (3)访问对象的属性和方法
+    </p>
+    <xmp>
+        console.log(obj["name"])
+        console.log(obj.name)
+        obj["run"]();
+        obj.sleep(10);
+    </xmp>
+    <p>
+        (4)动态给对象添加属性 <br>
+        注：后期添加的属性，在这之前使用该对象，也会有当前添加的属性
+    </p>
+    <xmp>
+        obj.faceValue=100 ;
+    </xmp>
+    <p>
+        (5)给对象添加方法
+    </p>
+    <xmp>
+        obj.play=function(){
+            console.log("玩")
+        }
+    </xmp>
+    <p>
+        (6)动态删除对象属性
+    </p>
+    <xmp>
+        delete obj.name
+        console.log(obj.name) //undefined
+    </xmp>
+    <p>
+        (7)动态删除对象的方法
+    </p>
+    <xmp>
+        delete obj.run
+        obj.run()//报错
+    </xmp>
+    <h3>2、通过构造函数创建对象</h3>
+    <p>
+        通过该方法创建对象，会自动执行构造函数
+    </p>
+    <xmp>
+        function Person(name,age){
+            this.name=name;
+            this.age=age;
+            this.job=function(gz){
+                console.log(gz+"前端开发")
+                //函数对象方法
+            }
+            alert("123")//构造函数
+        }
+        var child=new Person("Zxw",30);
+        //创建对象时，会执行构造函数一次，弹出123
+
+        child.job("我的工作是")
+        //调用对象的方法，会弹出前端开发
+    </xmp>
+    <h3>3、工厂模式创建对象</h3>
+    <p>
+        在一个函数内创建好对象，把这个返回
+    </p>
+    <xmp>
+        function cratePerson(name,age){
+            var o=new Object()
+            o.name=name;
+            o.age=age;
+            return o;
+        }
+        var person1=cratePerson("Zxw1",1);
+        var person2=cratePerson("Zxw2",2);
+    </xmp>
+    <h3>4、原型模式创建对象</h3>
+    <xmp>
+        function Person(){};
+        Person.prototype.name="zxw";
+        Person.prototype.age=30;
+        Person.prototype.job=function(){ };
+
+        var Person1=new Person();
+        var Person2=new Person();
+        console.log(Person1.name)
+        //调用这个对象的共享属性
+        console.log(Person2.job());
+        //调用这个对象的共享方法
+    </xmp>
+    <h3>5、构造函数模式和原型模式组合使用  (混合模式)</h3>
+    <p>
+        构造函数用于定义实例属性，原型模式用于定义方法和共享的属性
+    </p>
+    <xmp>
+        function Person(name.age){
+            this.name=name;
+            this.age=age;
+        }
+        Person.prototype={
+            constructor:Person,
+            sayName:function(){
+                alert(this.name)
+            }
+        }
+        var Person1=new Person("zxw",1)
+        Person1.sayName();
+    </xmp>
+</section>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>总结</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- 删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <!-- 设置苹果工具栏颜色 -->
+    <meta name="format-detection" content="telephone=no"/>
+    <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/public.js"></script>
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/content.css">
+</head>
+<body>
+<header class="header">属性传值、事件传值</header>
+<section class="content">
+    <h3>1、父组件向子组件传值(属性传值)</h3>
+    <p>
+        在父组件以属性的方式绑定要传递的值 <br>
+        在子组件中使用props的方式接收，记得设置接收的类型 <br>
+    </p>
+    <h3>2、子组件向父组件传值(事件传值)</h3>
+    <p>
+        在子组件中注册事件this.$emit(事件名称，传递的值) <br>
+        在父组件中v-on:事件名称="方法名称($event)"<br>
+        在触发方法名称($event)(注：$event就是注册事件时传递的参数值) <br>
+        this.$parent.父组件属性名称="新的属性值";//直接改变父组件中的属性
+    </p>
+    <h3>3、传值和传引用的区别？</h3>
+    <p>
+        传值指的是传递String、布尔等基本类型值 <br>
+        传值只改变所设定的要改变的值 <br>
+        传引用指的是传递对象、数组等引用类型的值 <br>
+        传引用当改变一个数据的值，则与该绑定的值相关的值都会发生变化 <br>
+    </p>
+
+</section>
+</body>
+</html>

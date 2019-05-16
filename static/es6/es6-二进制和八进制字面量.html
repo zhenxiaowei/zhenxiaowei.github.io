@@ -12,23 +12,24 @@
     <!-- 设置苹果工具栏颜色 -->
     <meta name="format-detection" content="telephone=no"/>
     <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
-    <link rel="stylesheet" href="static/css/reset.css">
-    <link rel="stylesheet" href="static/index/index.css">
-    <script src="static/js/public.js"></script>
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/public.js"></script>
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/content.css">
 </head>
 <body>
-<header class="header">总结</header>
-<nav class="nav">
-    <ul>
-        <li><a href="es6.html">ES6学习</a></li>
-        <li><a href="html5.html">HTML5</a></li>
-        <li><a href="ajax.html">Ajax</a></li>
-        <li><a href="flex布局.html">file布局</a></li>
-        <li><a href="JavaScript.html">JavaScript</a></li>
-        <li><a href="网络&存储.html">网络&存储</a></li>
-        <li><a href="CSS3.html">CSS3</a></li>
-        <li><a href="Vue.html">Vue学习</a></li>
-    </ul>
-</nav>
+<header class="header">二进制和八进制字面量</header>
+<section class="content">
+    <h3>ES6</h3>
+    <xmp>
+        //在数字前面加上0o或者0O，就可以转换为八进制
+        let oValue = 0o10;
+        console.log(oValue);//八进制
+
+        let bValue=0b10;
+        console.log(bValue);//二进制
+    </xmp>
+</section>
 </body>
 </html>
+

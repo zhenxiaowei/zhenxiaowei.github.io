@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>总结</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- 删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <!-- 设置苹果工具栏颜色 -->
+    <meta name="format-detection" content="telephone=no"/>
+    <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/public.js"></script>
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/content.css">
+</head>
+<body>
+<header class="header">面向对象三大特性</header>
+<section class="content">
+  <h3>1、封装 (例如)</h3>
+    <xmp>
+        var MobilePhone=(function(){
+            //私有属性
+            var count=0;//代表手机的数量
+            var index=0;//代表手机的索引
+
+            //构造函数
+            var createphone=function(color,size,price){
+                count++;
+                this._color=color;//手机的颜色
+                this._size=size;//手机的大小
+                this._price=price;//手机的价格
+                this.index=count;//手机索引，是第几台创建的手机对象
+            }
+            //公有方法，存放在原型对象中
+            createphone.prototype={
+                "constructor":createphone,
+                "getColor":function(){
+                return this._color;
+            },
+            "setColor":function(color){
+                this._color=color;
+            },
+            "getSize":function(){
+                return "width"+this._size.width+"height"+this._size.height;
+            },
+            "setSize":function (size) {
+                this._size.width=size.width;
+                this._size.height=size.height;
+            },
+            "getPrice":function () {
+                return this._price;
+            },
+            "setPrice":function (price) {
+                this._price=price;
+            }
+            }
+            createphone.get_count_index=function () {
+                return count;
+            }
+            return createphone;
+        })();
+            var a=new MobilePhone("red",{width:"10px",height:"10px"},"100");
+            var b=new MobilePhone("blue",{width:"15px",height:"15px"},"110");
+            console.log(a);
+            console.log(a.getColor());
+            console.log(b.getColor());
+    </xmp>
+    <h3>2、继承 (例如)</h3>
+    <h3>(1)原型链继承</h3>
+    <xmp>
+        function a(name){//父类
+            this.name=name;
+        }
+        a.prototype.sayName=function(){//父类原型上的方法
+            console.log("name is"+this.name);
+        }
+
+        function b(name){//子类
+            this.name=name;
+        }
+        b.prototype=new a();//子类的prototype指向父类的实例
+        var b1=new b("Zxw");
+        b.sayName()//就可以继承父类的方法
+    </xmp>
+    <h3>(2)call()/apply()方法继承</h3>
+    <xmp>
+        function a(name) {
+            this.name = name;
+            this.sayName = function () {
+                console.log("name is " + this.name);
+            }
+        }
+
+        function b() {
+            var args = arguments;
+            // a.call(this, args[0], args[1])
+            a.apply(this,arguments)
+        }
+
+        var a1 = new a("Zxw");
+        a1.sayName()
+        var b1 = new b('zxwww');
+        b1.sayName()
+    </xmp>
+    <h3>(3)混合继承</h3>
+    <xmp>
+        function a(name){//父类
+            this.name=name;
+        }
+        a.prototype.sayName=function(){
+            console.log("name is"+this.name);
+        }
+
+        function b(){//子类
+            var args=arguments;
+            a.call(this, args[0])
+        }
+        b.prototype=new a();//子类的prototype指向父类的实例
+        var b1=new b("Zxw");
+        b1.sayName()//就可以继承父类的方法
+    </xmp>
+    <h3>(4)对象冒充继承</h3>
+    <xmp>
+        function a(name){
+            this.name=name;
+            this.sayName=function () {
+                console.log("name is"+this.name);
+            }
+        }
+        function b(name){
+            this.c=a;//将a类的构造函数赋值给this.c
+            this.c(name);//冒充对象
+            delete this.c;//移除对a的引用
+        }
+        var a1=new a("Zxw1");
+        var b1=new b("Zxw2");
+        a1.sayName()
+        b1.sayName()
+    </xmp>
+    <h3>3、多态</h3>
+    <xmp>
+        function Add() {
+            function zepo() {
+                return 10;
+            }
+
+            function one(num) {
+                return 10 + num;
+            }
+
+            function two(num1, num2) {
+                return 10 + num1 + num2;
+            }
+
+            //相加共有方法
+            this.add = function () {
+                var args = arguments;
+                var len = args.length;
+                switch (len) {
+                    case 0:
+                    return zepo()
+                    break;
+                    case 1:
+                    return one(args[0])
+                    break;
+                    case 2:
+                    return two(args[0], args[1])
+                    break
+                }
+            }
+        }
+        var A = new Add();
+        console.log(A.add());
+        console.log(A.add(5));
+        console.log(A.add(1, 2));
+    </xmp>
+</section>
+</body>
+</html>

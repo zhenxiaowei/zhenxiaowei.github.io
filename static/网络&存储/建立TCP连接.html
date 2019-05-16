@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>总结</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- 删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <!-- 设置苹果工具栏颜色 -->
+    <meta name="format-detection" content="telephone=no"/>
+    <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/public.js"></script>
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/content.css">
+</head>
+<body>
+<header class="header">建立TCP连接</header>
+<section class="content">
+    <h3> 建立TCP连接需要三次握手，而断开连接需要四次挥手</h3>
+    <p>
+        第一次握手：建立连接时，客户端发送syn包到服务器，并进入SYN_SENT状态，等待服务器确认 <br>
+        <br>
+        第二次握手：服务器收到syn包，必须确认客户的SYN，同时自己也发送syn包，即SYN_ACK包，此时服务器进入SYN_RECV状态 <br>
+        <br>
+        第三次握手：客户端收到服务器的SYN_ACK包，向服务器发送确认包ACK，此包发送完毕，客户端和服务器进入ESTABLISSHED状态，完成三次握手（TCP连接成功） <br>
+        <br>
+    </p>
+    <p>
+        第一次挥手：客户端进程发出连接释放报文 <br>
+        <br>
+        第二次挥手：服务器收到连接释放报文，发出确认报文 <br>
+        <br>
+        第三次挥手：客户端收到确认报文，等到服务器发送连接释放报文 <br>
+        <br>
+        第四次握手：客户端收到释放报文，必须确认，服务器收到确认后，就结束了这次TCP连接 <br>
+    </p>
+
+
+</section>
+</body>
+</html>

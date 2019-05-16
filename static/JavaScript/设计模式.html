@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>总结</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- 删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <!-- 设置苹果工具栏颜色 -->
+    <meta name="format-detection" content="telephone=no"/>
+    <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/public.js"></script>
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/content.css">
+</head>
+<body>
+<header class="header">设计模式</header>
+<section class="content">
+   <h3>1、单例模式</h3>
+    <xmp>
+        var xiaowang = (function (a,b) {
+            var aa= function (a) {
+            console.log(a);
+        };
+        var bb=function (b) {
+            console.log(b);
+        };
+
+        return {
+            aa:aa,
+            bb:bb
+        };
+        })();
+        xiaowang.aa('aa');
+        xiaowang.bb('bb');
+    </xmp>
+    <h3>2、构造函数模式</h3>
+    <xmp>
+        function Animal(name, color) {
+            this.name = name;
+            this.color = color;
+            this.getName = function () {
+                return this.name;
+            }
+        }
+
+        //实例一个对象
+        var cat = new Animal('猫', "白色");
+        console.log(cat.getName());
+    </xmp>
+    <h3>3、工厂模式</h3>
+    <xmp>
+        function Animal1(opts) {
+            var obj = new Object();
+            obj.name = opts.name;
+            obj.color = opts.color;
+            obj.getInfo = () => console.log(`名称:${obj.name},颜色:${obj.color}`);
+            //箭头函数、模板字符串
+            return obj;
+        }
+
+        var cat1 = new Animal1({name: '波斯猫', color: '黑色'});
+        cat1.getInfo();
+    </xmp>
+    <h4>4、模块模式=>封装大部分代码，只暴露必需接口</h4>
+    <xmp>
+        var Car = (function () {
+            var name = '法拉利';
+
+            function sayName() {
+                console.log(name);
+            }
+
+            function getColor(name) {
+                console.log(name);
+            }
+
+            return {
+                name: sayName,
+                color: getColor
+            }
+        })();
+        Car.name();
+        Car.color('绿色');
+    </xmp>
+    <h4>5、混合模式=>原型模式+构造函数模式</h4>
+<xmp>
+    function Animal2(name, color) {
+        this.name = name;
+        this.color = color;
+        console.log(this.name + this.color);
+    }
+
+    Animal2.prototype.getInfo = function () {
+        console.log('名称:' + this.name);
+    };
+    var cat2 = new Animal2('狗', '白色');
+    cat2.getInfo();
+</xmp>
+</section>
+</body>
+</html>

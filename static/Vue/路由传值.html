@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>总结</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- 删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <!-- 设置苹果工具栏颜色 -->
+    <meta name="format-detection" content="telephone=no"/>
+    <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/public.js"></script>
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/content.css">
+</head>
+<body>
+<header class="header">路由传值</header>
+<section class="content">
+    <p>
+        现有如下场景，点击父组件的li元素跳转到子组件中，并携带参数，便于子组件获取数据。<br>
+        父组件中：<br>
+    </p>
+    <xmp>
+        <li v-for="item in obj" @click="getDescribe(item.id)"></li>
+    </xmp>
+    <h3>1、方案一</h3>
+    <xmp>
+        getDescribe(id){
+            //直接调用$router.push实现携带参数的跳转
+            this.$router.push({
+                path:'/describe/${id}'
+            })
+        }
+        //需要对应路由配置如下：
+        {
+        path:'/describe/:id',
+        name:'Describe',
+        component:Describe
+        }
+        //很显然，需要在path中添加:id来对应$router.push中path携带的参数 <br>
+        在子组件中获取传递的参数值：
+        this.$route.params.id
+    </xmp>
+    <h3>2、方案二</h3>
+    <xmp>
+        //在父组件中路由跳转通过name来匹配路由，通过params来传递参数
+        getDescribe(id){
+            this.$router.push({
+                name:'Describe',
+                params:{
+                    id:id
+                }
+            })
+        }
+        //需要对应路由配置如下：
+        {
+        path:'/describe',
+        name:'Describe',
+        component:Describe
+        }
+        在子组件中获取传递的参数值：
+        this.$route.params.id
+    </xmp>
+    <h3>3、方案三</h3>
+    <xmp>
+        //在父组件中，使用path来匹配路由，然后通过query来传递参数
+        //这种情况下，query传递的参数会显示在url后面
+        getDescribe(id){
+            this.$router.push({
+                path:'/describe',
+                query:{
+                    id:id
+                }
+            })
+        }
+        //需要对应路由配置如下：
+        {
+        path:'/describe',
+        name:'Describe',
+        component:Describe
+        }
+        在子组件中获取传递的参数值：
+        this.$route.query.id
+    </xmp>
+</section>
+</body>
+</html>

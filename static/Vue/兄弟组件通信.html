@@ -12,23 +12,21 @@
     <!-- 设置苹果工具栏颜色 -->
     <meta name="format-detection" content="telephone=no"/>
     <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
-    <link rel="stylesheet" href="static/css/reset.css">
-    <link rel="stylesheet" href="static/index/index.css">
-    <script src="static/js/public.js"></script>
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/public.js"></script>
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/content.css">
 </head>
 <body>
-<header class="header">总结</header>
-<nav class="nav">
-    <ul>
-        <li><a href="es6.html">ES6学习</a></li>
-        <li><a href="html5.html">HTML5</a></li>
-        <li><a href="ajax.html">Ajax</a></li>
-        <li><a href="flex布局.html">file布局</a></li>
-        <li><a href="JavaScript.html">JavaScript</a></li>
-        <li><a href="网络&存储.html">网络&存储</a></li>
-        <li><a href="CSS3.html">CSS3</a></li>
-        <li><a href="Vue.html">Vue学习</a></li>
-    </ul>
-</nav>
+<header class="header">兄弟组件通信</header>
+<section class="content">
+    <p>
+        1、var bux =new Vue(); <br>
+        2、接收方 <br>
+            bux.$on('事件名称',function(msg){})<br>
+        3、发生方
+            bux.$emit('事件名称','传递的值');
+    </p>
+</section>
 </body>
 </html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>总结</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- 删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <!-- 设置苹果工具栏颜色 -->
+    <meta name="format-detection" content="telephone=no"/>
+    <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/public.js"></script>
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/content.css">
+</head>
+<body>
+<header class="header">知识总结</header>
+<section class="content">
+   <h3>1、作用域链</h3>
+    <p>
+        每一个函数都有一个作用域链，如，创建了一个函数，函数里又包含了一个函数，这样就形成了作用域链 <br>
+        特点：在组件作用域的范围去查找，如果找不到，就会沿着作用域链向上查找
+    </p>
+    <h3>2、MVC和MVVM的区别</h3>
+    <h4>1)MVVM定义</h4>
+    <p>
+        MVVM是Model-View-ViewModel的简写。即模型-视图-视图模型 <br>
+        模型：指的是后端传递的数据<br>
+        视图：指的是看到的页面<br>
+        视图模型：MVVM的核心，它是连接View和Model的桥梁（数据绑定和dom事件监听）<br>
+    </p>
+
+    <h4>2)MVC定义</h4>
+    <p>
+        MVC是Model-View-Controller的简写。即模型-视图-控制器<br>
+        M：数据 将js的ajax当做Model，就是数据层<br>
+        V：看到的页面，如文字、数字、日期等，方便控制器控制。可以将html看成是View<br>
+        C：js功能控制 将js看成是Controller控制器<br>
+    </p>
+
+    <h4> 3)MVC和MVVM的区别</h4>
+    <p>
+        MVVM：实现了View和Model的自动同步，就是Model的属性改变，不需要手动操作DOM，来改变View的显示，而是改变后，对应的View层会自动改变，例，Vue<br>
+    </p>
+    <h3>3、js模块化</h3>
+    <p>
+        CMD推崇就近依赖，只有在用到某个模块的时候再去require    依赖于seajs   异步加载 <br>
+        <br>
+        AMD推崇依赖前置，在定义模块的时候就要声明其依赖的模块    依赖于requirejs   异步加载<br>
+        <br>
+        commonJS运行在服务端     同步加载<br>
+        <br>
+        ES6是ES2015的简称，一般通过export来暴露模块，import来导入模块（国际标准）<br>
+    </p>
+    <h3>3、js中如何检测一个变量是一个String类型？请写出函数</h3>
+    <h4>1)方案一</h4>
+    <xmp>
+        function isString(obj){
+            return typeof(obj)==="string"?true:false;
+        }
+    </xmp>
+    <h4>2)方案二</h4>
+    <xmp>
+        function isString(obj) {
+            return obj.constructor==="String"?true:false;
+        }
+    </xmp>
+    <h4>3)方案三</h4>
+    <xmp>
+        function isString(obj) {
+            return Object.prototype.toString.call(obj) === "[object String]" ? true : false;
+        }
+        var isstring=isString("zxw");
+        console.log(isstring);//true
+    </xmp>
+    <h3>4、请用js去除字符串空格？</h3>
+    <h4>1)使用replace正则匹配的方法</h4>
+    <p>
+        去除所有空格：str=str.replace(/\s*/g,"");<br>
+        去除两头空格：str=str.replace(/^\s*|\s*$/g,"");<br>
+        去除左空格：str=str.replace(/^\s*/,"");<br>
+        去除右空格：str=str.replace(/(\s*$)/g,"");<br>
+        var str="23 23";<br>
+        var str2=str.replace(/\s*/g,"");<br>
+        console.log(str2);//2323 <br>
+    </p>
+    <h4>2)使用str.trim()方法</h4>
+    <p>
+        str.trim()局限性，无法去除中间的空格 <br>
+        var str="23 23";<br>
+        var str2=str.trim();<br>
+        console.log(str2);//23 23 <br>
+        同理，str.trimLeft(),str.trimRight()分别去除字符串的左右空格
+    </p>
+    <h4>3)使用jquery，$.trim(str)方法</h4>
+    <p>
+        $.trim(str)局限性，无法去除中间的空格 <br>
+        var str="23 23";<br>
+        var str2=str.trim();<br>
+        console.log(str2);//23 23 <br>
+    </p>
+    <h3>5、获取浏览器URL，取出问号后的参数，拼接为对象</h3>
+    <xmp>
+        function queryURLParmeter(url) {
+            var reg = /([^?&=]+)=([^?&=]+)/g, obj = {}, res = reg.exec(url);
+            while (res) {
+                var fir = res[1], tww = res[2];
+                obj[fir] = tww;
+                res = reg.exec(url);
+            }
+            return obj;
+        };
+        console.log(queryURLParmeter('http://localhost:63342/index.html?id=1&name=zxw&age=30'));
+        //{ id: '1', name: 'zxw', age: '30' }
+    </xmp>
+    <h3>6、常用的字符串操作方法？</h3>
+    <p>
+        concat()-将两个或多个字符拼接，返回一个新的字符串 <br>
+        indexOf()-返回字符串中一个字串第一次出现的索引位置，不存在返回-1 <br>
+        lastIndexOf()-返回字符串中一个字串最后一次出现的索引位置，不存在返回-1 <br>
+        charAt()-返回指定位置的字符串 <br>
+        match()-检查一个字符串是否匹配一个正则表达式 <br>
+        substr()函数-返回从string的startPos位置，长度为length的字符串 <br>
+        substring()-返回字符串的一个字串，参数是起始位置和结束位置 <br>
+        slice()-提取字符串的一部分，返回一个新的字符串 <br>
+        replace()-用来查找匹配一个正则表达式的字符串，然后使用新字符串代替匹配的字符串 <br>
+        search()-执行一个正则表达式匹配查找，如果查找成功，返回字符串中匹配的索引值，否则返回-1 <br>
+        split()-将一个字符串拆成一个字串数组 <br>
+        length-返回字符串长度 <br>
+        toLowerCase()-将整个字符串转成小写字母 <br>
+        toUpperCase()-将整个字符串转成大写字母 <br>
+    </p>
+    <h3>7、怎样添加、删除、移动、复制、创建和查找节点？</h3>
+    <h4>1)创建新节点</h4>
+    <p>
+        createDocumentFragment();//创建一个DOM片段 <br>
+        createElement();//创建一个具体的元素 <br>
+        createTextNode();/创建一个文本节点
+    </p>
+    <h4>2)添加、删除、替换、插入</h4>
+    <p>
+        appendChild()//添加 <br>
+        removeChild()//删除 <br>
+        replaceChild()//替换 <br>
+        insertBefore()//插入 <br>
+    </p>
+    <h4>3)查找</h4>
+    <p>
+        getElementByTagName()//通过标签名称 <br>
+        getElementByName()//通过元素的Name属性的值 <br>
+        getElementById()//通过元素ID，唯一性 <br>
+    </p>
+</section>
+</body>
+</html>

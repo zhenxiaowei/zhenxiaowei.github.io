@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>总结</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- 删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <!-- 设置苹果工具栏颜色 -->
+    <meta name="format-detection" content="telephone=no"/>
+    <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/public.js"></script>
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/content.css">
+    <style>
+        #div1 {
+            width: 100%;
+            height: 2rem;
+            padding: 0.1rem;
+            border: 1px solid #aaaaaa;
+        }
+
+        #drag1 {
+            width: 3rem;
+        }
+    </style>
+</head>
+<body>
+<header class="header">拖拽</header>
+<section class="content">
+    <h3> 定义和方法 在拖放过程中触发以下事件
+    </h3>
+    <p>
+        在拖动目标上触发事件（源文件）<br>
+        ondragstart-用户开始拖动元素时触发<br>
+        ondrag-元素正在拖动时触发<br>
+        ondragend-用户完成元素拖动后触发<br>
+        <br>
+        释放目标时触发的事件：<br>
+        ondragenter-当被鼠标拖动的对象进入容器范围内时触发此事件<br>
+        ondragover-当某被拖动的对象在另一对象容器范围内拖动时触发此事件<br>
+        ondragleave-当被鼠标拖动的对象离开其容器范围时触发此事件<br>
+        ondrop-在一个拖动过程中，释放鼠标键时触发此事件<br>
+    </p>
+    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <img id="drag1" src="1.jpg" draggable="true" ondragstart="drag(event)"/>
+    <xmp>
+        function allowDrop(ev) {
+            ev.preventDefault();
+            //阻止对元素的默认处理方式
+        }
+
+        function drag(ev) {
+            console.log(ev.target.id);
+            ev.dataTransfer.setData("Text", ev.target.id);
+            //数据类型是Text，值时可拖动元素的id
+        }
+
+        function drop(ev) {
+            //当放置被拖动的数据时，ondrop属性调用这个函数
+            ev.preventDefault();//避免浏览器对数据默认处理
+            var id = ev.dataTransfer.getData("Text");//获取被拖动的数据
+            console.log(id);//被拖元素的id
+            let dataId = document.getElementById(id);
+            console.log(ev.target);//当前放置的盒子
+            ev.target.appendChild(dataId);//追加进去
+        }
+    </xmp>
+</section>
+</body>
+</html>
+<script>
+    function allowDrop(ev) {
+        ev.preventDefault();//阻止对元素的默认处理方式
+    }
+
+    function drag(ev) {
+        console.log(ev.target.id);
+        ev.dataTransfer.setData("Text", ev.target.id);
+        //数据类型是Text，值时可拖动元素的id
+    }
+
+    function drop(ev) {//当放置被拖动的数据时，ondrop属性调用这个函数
+        ev.preventDefault();//避免浏览器对数据默认处理
+        var id = ev.dataTransfer.getData("Text");//获取被拖动的数据
+        console.log(id);//被拖元素的id
+        let dataId = document.getElementById(id);
+        console.log(ev.target);//当前放置的盒子
+        ev.target.appendChild(dataId);//追加进去
+    }
+</script>

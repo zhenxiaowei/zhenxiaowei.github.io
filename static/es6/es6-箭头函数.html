@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>总结</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- 删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <!-- 设置苹果工具栏颜色 -->
+    <meta name="format-detection" content="telephone=no"/>
+    <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/public.js"></script>
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/content.css">
+</head>
+<body>
+<header class="header">箭头函数</header>
+<section class="content">
+    <h3>箭头函数的特点：</h3>
+    <p>
+        1、不需要function关键字<br>
+        2、省略return关键字<br>
+        3、继承上下文的this关键字<br>
+        4、当函数只有一个参数的时候，可以省略括号<br>
+        5、当函数返回仅有一个表达式的时候，省略{}和return<br>
+    </p>
+    <h3>1、ES6之前</h3>
+    <xmp>
+        var add = function (a, b) {
+        return a + b;
+        }
+    </xmp>
+    <h3>2、ES6</h3>
+    <xmp>
+        var add = (a, b) => a + b;
+    </xmp>
+</section>
+</body>
+</html>
+

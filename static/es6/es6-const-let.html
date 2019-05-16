@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>总结</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- 删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <!-- 设置苹果工具栏颜色 -->
+    <meta name="format-detection" content="telephone=no"/>
+    <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/public.js"></script>
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/content.css">
+</head>
+<body>
+<header class="header">const let</header>
+<section class="content">
+    <h3>1、let</h3>
+    <xmp>
+        var x = "全局变量";
+        {
+        let x = "局部变量"
+        console.log(x);
+        }
+        console.log(x);
+        * ES6推荐使用let声明局部变量
+        * let关键字声明的变量不具备变量提升的特性
+    </xmp>
+    <h3>2、const</h3>
+    <xmp>
+        const A = 1;
+        //a=0;//报错
+        const STUDENT = {name: 'cc'};
+        STUDENT.name = 'yy';//不报错
+        console.log(STUDENT);
+        //STUDENT={name:'yy'}//报错
+        * 当使用常量的时候，请使用大写
+        * const在声明时必须被赋值
+    </xmp>
+</section>
+</body>
+</html>
