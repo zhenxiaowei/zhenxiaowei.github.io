@@ -39,3 +39,7 @@
     overflow-x: auto;
     color: #4cae4c;
 }
+.content>div{
+    width: 100%;
+    overflow-x: auto;
+}

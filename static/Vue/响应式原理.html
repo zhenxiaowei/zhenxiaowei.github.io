@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>总结</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- 删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <!-- 设置苹果工具栏颜色 -->
+    <meta name="format-detection" content="telephone=no"/>
+    <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/public.js"></script>
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/content.css">
+</head>
+<body>
+<header class="header">响应式原理</header>
+<section class="content">
+  <p>
+      当你把一个普通的js对象传给Vue实例的data选项，Vue将遍历此对象的所有属性，并使用Object.defineProperty把这些属性全部转为getter/setter。<br>
+      这些getter/setter对用户是不可见的，但是在内部它们让Vue追踪依赖，在属性被访问和修改时通知变化。<br>
+      每个组件实例都有相应的watcher实例对象，它会在组件渲染的过程中把属性记录为依赖，之后当依赖项的setter被调用时，会通知watcher重新计算，从而致使它关联的组件得以更新。
+  </p>
+</section>
+</body>
+</html>
