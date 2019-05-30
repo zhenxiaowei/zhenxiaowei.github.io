@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>总结</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- 删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <!-- 设置苹果工具栏颜色 -->
+    <meta name="format-detection" content="telephone=no"/>
+    <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/public.js"></script>
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/content.css">
+    <style>
+        .box{
+            zoom:1;
+        }
+        .box:after{
+            content: ".";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+        .leftBox, .rightBox{
+            float: left;
+            width: 20%;
+            height: 500px;
+            margin: 5px;
+            background: #ffccf7;
+            display: inline;
+            -webkit-transition: width 1s ease;
+            -moz-transition: width 1s ease;
+            -o-transition: width 1s ease;
+            -ms-transition: width 2s ease;
+            transition: width 1s ease;
+        }
+        .middleBox{
+            float: left;
+            width: 50%;
+            height: 800px;
+            margin: 5px;
+            background: #b1fffc;
+            display: inline;
+            -webkit-transition: width 1s ease;
+            -moz-transition: width 1s ease;
+            -o-transition: width 1s ease;
+            -ms-transition: width 1s ease;
+            transition: width 1s ease;
+        }
+        .rightBox{
+            background: #fffab1;
+        }
+        @media only screen and (min-width: 1024px){
+            .box{
+                width: 1000px;
+                margin: auto
+            }
+        }
+        @media only screen and (min-width: 400px) and (max-width: 1024px){
+            .rightBox{
+                width: 0;
+            }
+            .leftBox{ width: 30%}
+            .middleBox{ width: 65%}
+        }
+        @media only screen and (max-width: 400px){
+            .leftBox, .rightBox, .middleBox{
+                width: 98%;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+<header class="header">media1实例</header>
+<section class="content">
+<xmp>
+    .box{
+        zoom:1;
+    }
+    .box:after{
+        content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+    }
+    .leftBox, .rightBox{
+        float: left;
+        width: 20%;
+        height: 500px;
+        margin: 5px;
+        background: #ffccf7;
+        display: inline;
+        -webkit-transition: width 1s ease;
+        -moz-transition: width 1s ease;
+        -o-transition: width 1s ease;
+        -ms-transition: width 2s ease;
+        transition: width 1s ease;
+    }
+    .middleBox{
+        float: left;
+        width: 50%;
+        height: 800px;
+        margin: 5px;
+        background: #b1fffc;
+        display: inline;
+        -webkit-transition: width 1s ease;
+        -moz-transition: width 1s ease;
+        -o-transition: width 1s ease;
+        -ms-transition: width 1s ease;
+        transition: width 1s ease;
+    }
+    .rightBox{
+        background: #fffab1;
+    }
+    @media only screen and (min-width: 1024px){
+        .box{
+            width: 1000px;
+            margin: auto
+        }
+    }
+    @media only screen and (min-width: 400px) and (max-width: 1024px){
+        .rightBox{
+            width: 0;
+        }
+        .leftBox{ width: 30%}
+        .middleBox{ width: 65%}
+    }
+    @media only screen and (max-width: 400px){
+        .leftBox, .rightBox, .middleBox{
+            width: 98%;
+            height: 200px;
+        }
+    }
+</xmp>
+</section>
+<div class="box">
+    <div class="leftBox"></div>
+    <div class="middleBox"></div>
+    <div class="rightBox"></div>
+</div>
+</body>
+</html>

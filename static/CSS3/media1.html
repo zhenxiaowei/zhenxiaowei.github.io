@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>总结</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- 删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <!-- 设置苹果工具栏颜色 -->
+    <meta name="format-detection" content="telephone=no"/>
+    <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/public.js"></script>
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/content.css">
+    <style>
+        .abc{ height:300px; border:1px solid #000; margin:0 auto}
+        @media screen and (min-width: 1201px) {
+            .abc {width: 1200px}
+        }
+        /* 设置了浏览器宽度不小于1201px时 abc 显示1200px宽度 */
+
+        @media screen and (max-width: 1200px) {
+            .abc {width: 900px}
+        }
+        /* 设置了浏览器宽度不大于1200px时 abc 显示900px宽度 */
+
+        @media screen and (max-width: 900px) {
+            .abc {width: 200px;}
+        }
+        /* 设置了浏览器宽度不大于900px时 abc 显示200px宽度 */
+
+        @media screen and (max-width: 500px) {
+            .abc {width: 100px;}
+        }
+        /* 设置了浏览器宽度不大于500px时 abc 显示100px宽度 */
+
+    </style>
+</head>
+<body>
+<header class="header">media1实例</header>
+<section class="content">
+    <xmp>
+        .abc{ height:300px; border:1px solid #000; margin:0 auto}
+        @media screen and (min-width: 1201px) {
+            .abc {width: 1200px}
+        }
+        /* 设置了浏览器宽度不小于1201px时 abc 显示1200px宽度 */
+
+        @media screen and (max-width: 1200px) {
+            .abc {width: 900px}
+        }
+        /* 设置了浏览器宽度不大于1200px时 abc 显示900px宽度 */
+
+        @media screen and (max-width: 900px) {
+            .abc {width: 200px;}
+        }
+        /* 设置了浏览器宽度不大于900px时 abc 显示200px宽度 */
+
+        @media screen and (max-width: 500px) {
+            .abc {width: 100px;}
+        }
+        /* 设置了浏览器宽度不大于500px时 abc 显示100px宽度 */
+    </xmp>
+</section>
+<div class="abc">DIVCSS5实例：我这个DIV宽度会随浏览器宽度变化哦，试试改变浏览器宽度</div>
+
+</body>
+</html>
