@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>总结</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- 删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <!-- 设置苹果工具栏颜色 -->
+    <meta name="format-detection" content="telephone=no"/>
+    <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/public.js"></script>
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/content.css">
+    <link rel="stylesheet" href="animate.css">
+</head>
+<body>
+<header class="header">transform属性</header>
+<section class="content">
+<h3>1、旋转rotate</h3>
+    <p>
+        用法：transform:rotate(45deg);<br>
+        共一个参数“角度”，单位deg为度的意思，正数为顺时针旋转，负数为逆时针旋转，上述代码是顺时针旋转45度
+    </p>
+    <xmp>
+        width: 100px;
+        height: 100px;
+        background: #3E5C9A;
+        transform: rotate(45deg);
+        margin: 10px;
+    </xmp>
+<div style="width: 50px;height: 50px;background: #3E5C9A;transform: rotate(45deg);margin: 10px"></div>
+    <h3>2、缩放scale</h3>
+    <p>
+        用法：transform:scale(0.5)或者transform:scale(0.5,2)<br>
+        参数表示缩放倍数：<br>
+        a)一个参数时：表示水平和垂直同时缩放该倍率 <br>
+        b)两个参数时：第一个参数指定水平方向的缩放倍率，第二个参数指定垂直方向的缩放倍率
+    </p>
+    <xmp>
+        width: 50px;
+        height: 50px;
+        background: #3E5C9A;
+        transform: scale(0.5);
+        margin: 10px
+    </xmp>
+    <div style="width: 50px;height: 50px;background: #3E5C9A;transform: scale(0.5);margin: 10px"></div>
+   <xmp>
+       width: 50px;
+       height: 50px;
+       background: #3E5C9A;
+       transform: scale(0.5,2);
+       margin:30px
+   </xmp>
+    <div style="width: 50px;height: 50px;background: #3E5C9A;transform: scale(0.5,2);margin: 30px"></div>
+<h3>3、倾斜skew</h3>
+    <p>
+        用法：transform:skew(30deg)或者transform:skew(30deg,30deg) <br>
+        参数表示倾斜角度，单位为deg <br>
+        一个参数时：表示水平的倾斜角度 <br>
+        两个参数时：第一个参数表示水平方向的倾斜角度，第二个参数表示垂直方向的倾斜角度 <br>
+        说明：skew的默认原点(transform-origin)，是这个物件的中心点
+    </p>
+    <xmp>
+        width: 50px;
+        height: 50px;
+        background: #3E5C9A;
+        transform: skew(10deg);
+        margin: 30px
+    </xmp>
+    <div style="width: 50px;height: 50px;background: #3E5C9A;transform: skew(10deg);margin: 30px">
+
+    </div>
+    <xmp>
+        width: 50px;
+        height: 50px;
+        background: #3E5C9A;
+        transform: skew(10deg,30deg);
+        margin: 30px
+    </xmp>
+    <div style="width: 50px;height: 50px;background: #3E5C9A;transform: skew(10deg,30deg);margin: 30px">
+
+    </div>
+    <h3>4、移动translate</h3>
+    <p>
+        用法：transform:translate(45px)或者transform:translate(45px,150px) <br>
+        参数表示移动距离，单位为px <br>
+        一个参数时：表示水平方向的移动距离 <br>
+        两个参数时：第一个参数表示水平方向的移动距离，两个参数时表示垂直方向的移动距离
+    </p>
+    <xmp>
+        width: 50px;
+        height: 50px;
+        background: #3E5C9A;
+        transform: translate(10px);
+    </xmp>
+    <div style="width: 50px;height: 50px;background: #3E5C9A;transform: translate(10px);">
+
+    </div>
+    <xmp>
+        width: 50px;
+        height: 50px;
+        background: #3E5C9A;
+        transform: translate(10px,20px);
+    </xmp>
+    <div style="width: 50px;height: 50px;background: #3E5C9A;transform: translate(10px,10px);margin: 10px">
+
+    </div>
+    <h3>5、基准点transform-origin</h3>
+    <p>
+        在使用transform方法进行文字或图像的变形时，是以元素的中心点为基准点进行的。<br>
+        使用transform-origin属性，可以改变变形的基准点 <br>
+        用法：transform-origin:10px 10px; <br>
+        共两个参数，表示相对左上角原点的距离，单位为px，第一个参数表示相对左上角原点水平方向的距离，第二个参数标书相对左上角原点垂直方向的距离 <br>
+        两个参数除了可以设置为具体的像素值，其中第一个参数可以指定为left/center/right，第二个参数可以指定为top/center/bottom
+    </p>
+    <xmp>
+        width: 50px;
+        height: 50px;
+        background: #3E5C9A;
+        transform-origin: 10px 10px;
+        transform: skew(10deg)
+    </xmp>
+    <div style="width: 50px;height: 50px;background: #3E5C9A;transform-origin: 10px 10px;transform: skew(10deg)">
+
+    </div>
+    <h3>6、多方向组合变形</h3>
+    <p>
+        使用transform对元素进行旋转、缩放、移动的方法，可以组合使用 <br>
+        用法：transform:rotate(45deg)scale(0.5)skew(30deg,30deg)translate(100px.100px) <br>
+        这四种变形方法顺序可以随意，但不同的顺序变形结果不同，原因是变形的顺序是从左到右依次执行
+    </p>
+</section>
+</body>
+</html>
