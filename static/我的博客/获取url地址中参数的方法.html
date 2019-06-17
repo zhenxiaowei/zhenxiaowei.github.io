@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>总结</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- 删除苹果默认的工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <!-- 设置苹果工具栏颜色 -->
+    <meta name="format-detection" content="telephone=no"/>
+    <!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <script src="../js/public.js"></script>
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/content.css">
+</head>
+<body>
+<header class="header">获取url地址中参数的方法</header>
+<section class="content">
+    <h3>获取 url 中的参数</h3>
+    <p>
+        1. 指定参数名称，返回该参数的值 或者 空字符串；<br>
+        2. 不指定参数名称，返回全部的参数对象 或者 {}；<br>
+        3. 如果存在多个同名参数，则返回数组 ；<br>
+    </p>
+    <h4>解一：使用字符串拼接匹配字符；</h4>
+    <xmp>
+
+        /* 获取URl中的参数
+        * @para url
+        * @para key 参数名*/
+        function getUrlParam(sUrl, sKey) {
+            var left= sUrl.indexOf("?") + 1
+            var right= sUrl.lastIndexOf("#")
+            var parasString = sUrl.slice(left, right)
+            var paras = parasString.split('&');
+            var parasjson = {}
+            paras.forEach(function (value, index, arr) {
+                var a = value.split('=');
+                parasjson[a[0]] !== undefined ? parasjson[a[0]] = [].concat(parasjson[a[0]], a[1]) : parasjson[a[0]] = a[1];
+             });
+
+            let result = arguments[1] !== void 0 ? (parasjson[arguments[1]] || '') : parasjson;
+            return result
+        }
+    </xmp>
+    <h4>解二：使用正则表达式匹配字符，并使用正则Replace方法替换；</h4>
+    <xmp>
+
+        function getUrlParam2(sUrl, sKey) {
+            var result, Oparam = {};
+            sUrl.replace(/[\?&]?(\w+)=(\w+)/g, function ($0, $1, $2){
+                console.log('$0:' + $0 + "     $1:" + $1 + "     $2:" + $2);
+                Oparam[$1] === void 0 ? Oparam[$1] = $2 : Oparam[$1] = [].concat(Oparam[$1], $2);
+            });
+            sKey === void 0 || sKey === '' ? result = Oparam : result = Oparam[sKey] || '';
+            return result;
+        }
+    </xmp>
+    <h4>解三：使用正则表达式匹配字符，并使用正则Exec方法进行组装；</h4>
+    <xmp>
+
+        function getUrlParam3(sUrl, sKey) {
+            var resObj = {};
+            var reg = /(\w+)=(\w+)/g;
+            while (reg.exec(sUrl)) {
+                resObj[RegExp.$1] ? resObj[RegExp.$1] = [].concat(resObj[RegExp.$1], RegExp.$2) : resObj[RegExp.$1] = RegExp.$2;
+            }
+            if (sKey) {
+                return (resObj[sKey] ? resObj[sKey] : '');
+            }
+            return resObj;
+        }
+    </xmp>
+</section>
+</body>
+</html>
